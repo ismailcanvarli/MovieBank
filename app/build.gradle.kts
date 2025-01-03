@@ -62,8 +62,6 @@ dependencies {
     // Retrofit
     implementation (libs.retrofit)
     implementation (libs.converter.gson)
-    // Glide
-    implementation (libs.landscapist.glide)
     // Gson
     implementation(libs.gson)
     // MVVM
@@ -77,6 +75,14 @@ dependencies {
     // Navigation
     implementation(libs.androidx.navigation.compose)
     // Hilt
-    implementation(libs.hilt.android)
-    kapt(libs.hilt.android.compiler)
+    // Hilt Core
+    implementation (libs.hilt.android)
+    kapt (libs.hilt.compiler)
+    // Hilt ViewModel
+    implementation (libs.androidx.hilt.lifecycle.viewmodel)
+    kapt (libs.androidx.hilt.compiler)
+    // Jetpack Compose için Hilt Navigasyon
+    implementation (libs.androidx.hilt.navigation.compose)
+    // Coil
+    implementation(libs.coil.compose)
 }
