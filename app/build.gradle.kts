@@ -3,7 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     id("kotlin-kapt")
-    id("dagger.hilt.android.plugin")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -75,14 +75,12 @@ dependencies {
     // Navigation
     implementation(libs.androidx.navigation.compose)
     // Hilt
-    // Hilt Core
-    implementation (libs.hilt.android)
-    kapt (libs.hilt.compiler)
-    // Hilt ViewModel
-    implementation (libs.androidx.hilt.lifecycle.viewmodel)
-    kapt (libs.androidx.hilt.compiler)
-    // Jetpack Compose için Hilt Navigasyon
-    implementation (libs.androidx.hilt.navigation.compose)
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.android.compiler)
     // Coil
     implementation(libs.coil.compose)
+}
+
+kapt {
+    correctErrorTypes = true
 }
