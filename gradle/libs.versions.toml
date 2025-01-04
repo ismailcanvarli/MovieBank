@@ -3,11 +3,8 @@ agp = "8.7.3"
 coilCompose = "2.5.0"
 converterGson = "2.9.0"
 gson = "2.10.1"
-hiltAndroid = "2.49"
-hiltAndroidCompiler = "2.51.1"
 hiltAndroidVersion = "2.51.1"
 hiltAndroidCompilerVersion = "2.51.1"
-hiltCompiler = "1.2.0"
 kotlin = "2.0.0"
 coreKtx = "1.15.0"
 junit = "4.13.2"
@@ -50,9 +47,7 @@ kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutine
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutinesCore" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 
-
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-
