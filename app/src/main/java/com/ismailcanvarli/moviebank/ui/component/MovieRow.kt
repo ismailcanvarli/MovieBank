@@ -20,6 +20,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.ismailcanvarli.moviebank.data.entity.Movie
+import com.ismailcanvarli.moviebank.retrofit.ApiUtils
 
 @Composable
 fun MovieRow(movie: Movie, onMovieClick: () -> Unit) {
@@ -31,7 +32,7 @@ fun MovieRow(movie: Movie, onMovieClick: () -> Unit) {
         verticalAlignment = Alignment.CenterVertically
     ) {
         AsyncImage(
-            model = "http://kasimadalan.pe.hu/movies/images/${movie.image}",
+            model = ApiUtils.getImageUrl(movie.image),
             contentDescription = movie.name,
             modifier = Modifier
                 .size(100.dp)

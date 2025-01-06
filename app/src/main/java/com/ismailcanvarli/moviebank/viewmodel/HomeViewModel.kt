@@ -9,8 +9,6 @@ import androidx.lifecycle.viewModelScope
 import com.ismailcanvarli.moviebank.data.entity.Movie
 import com.ismailcanvarli.moviebank.data.repository.MovieRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
