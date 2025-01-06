@@ -14,15 +14,15 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    val movieRepository: MovieRepository
+    var movieRepository: MovieRepository
 ) : ViewModel() {
     var movieList = MutableLiveData<List<Movie>>()
 
     init {
-        fetchMovies()
+        getAllMovies()
     }
 
-    private fun fetchMovies() {
+    fun getAllMovies() {
         CoroutineScope(Dispatchers.Main).launch {
             movieList.value = movieRepository.getAllMovies()
         }

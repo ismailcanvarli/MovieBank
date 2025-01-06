@@ -62,9 +62,10 @@ dependencies {
     // Retrofit
     implementation (libs.retrofit)
     implementation (libs.converter.gson)
+    implementation(libs.okhttp)
     // Gson
     implementation(libs.gson)
-    // MVVM
+    // ViewModel
     implementation(libs.androidx.lifecycle.viewmodel)
     implementation(libs.androidx.activity.ktx)
     // Live Data
