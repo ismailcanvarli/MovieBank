@@ -2,8 +2,10 @@
 
 package com.ismailcanvarli.moviebank.viewmodel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.ismailcanvarli.moviebank.data.entity.Movie
 import com.ismailcanvarli.moviebank.data.repository.MovieRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -14,17 +16,15 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    var movieRepository: MovieRepository
+    private val repository: MovieRepository
 ) : ViewModel() {
-    var movieList = MutableLiveData<List<Movie>>()
-
-    init {
-        getAllMovies()
-    }
+    private val _movieList = MutableLiveData<List<Movie>>()
+    val movieList: LiveData<List<Movie>> = _movieList
 
     fun getAllMovies() {
-        CoroutineScope(Dispatchers.Main).launch {
-            movieList.value = movieRepository.getAllMovies()
+        viewModelScope.launch {
+            val movies = repository.getAllMovies()
+            _movieList.postValue(movies)
         }
     }
 }

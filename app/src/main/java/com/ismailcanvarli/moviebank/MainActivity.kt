@@ -4,7 +4,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
-import com.ismailcanvarli.moviebank.navigation.AppNavGraph
+import androidx.navigation.compose.rememberNavController
+import com.ismailcanvarli.moviebank.ui.navigation.AppNavGraph
 import com.ismailcanvarli.moviebank.ui.theme.MovieBankTheme
 import com.ismailcanvarli.moviebank.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
