@@ -17,17 +17,22 @@ fun BottomBar(navController: NavController) {
     val currentRoute = navBackStackEntry.value?.destination?.route
 
     NavigationBar {
-        NavigationItem.values().forEach { item ->
-            NavigationBarItem(
-                icon = { Icon(item.icon, contentDescription = item.title) },
-                label = { Text(item.title) },
-                selected = currentRoute == item.route,
-                onClick = {
-                    if (currentRoute != item.route) {
-                        navController.navigate(item.route)
-                    }
-                }
-            )
-        }
+        NavigationItem.entries.filter { it.showInBottomBar }.forEach { item ->
+                NavigationBarItem(icon = {
+                    Icon(
+                        imageVector = item.icon!!, contentDescription = item.title
+                    )
+                },
+                    label = { Text(item.title) },
+                    selected = currentRoute == item.route,
+                    onClick = {
+                        if (currentRoute != item.route) {
+                            navController.navigate(item.route) {
+                                launchSingleTop = true
+                                restoreState = true
+                            }
+                        }
+                    })
+            }
     }
 }
