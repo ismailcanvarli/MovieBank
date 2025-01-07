@@ -1,9 +1,9 @@
 package com.ismailcanvarli.moviebank.di
 
-import com.ismailcanvarli.moviebank.data.datasource.MovieDataSource
-import com.ismailcanvarli.moviebank.data.repository.MovieRepository
+import com.ismailcanvarli.moviebank.data.remote.RemoteMovieDataSource
+import com.ismailcanvarli.moviebank.data.repository.RemoteMovieRepository
 import com.ismailcanvarli.moviebank.retrofit.ApiUtils
-import com.ismailcanvarli.moviebank.retrofit.MovieDao
+import com.ismailcanvarli.moviebank.data.remote.RemoteMovieApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,19 +15,19 @@ import javax.inject.Singleton
 class AppModule {
     @Provides
     @Singleton
-    fun provideMovieRepository(movieDataSource: MovieDataSource): MovieRepository {
-        return MovieRepository(movieDataSource)
+    fun provideMovieRepository(remoteMovieDataSource: RemoteMovieDataSource): RemoteMovieRepository {
+        return RemoteMovieRepository(remoteMovieDataSource)
     }
 
     @Provides
     @Singleton
-    fun provideMovieDataSource(movieDao: MovieDao): MovieDataSource {
-        return MovieDataSource(movieDao)
+    fun provideMovieDataSource(remoteMovieApi: RemoteMovieApi): RemoteMovieDataSource {
+        return RemoteMovieDataSource(remoteMovieApi)
     }
 
     @Provides
     @Singleton
-    fun provideMovieDao(): MovieDao {
+    fun provideMovieDao(): RemoteMovieApi {
         return ApiUtils.getMovieDao()
     }
 }

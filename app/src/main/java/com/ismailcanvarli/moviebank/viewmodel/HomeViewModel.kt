@@ -7,14 +7,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ismailcanvarli.moviebank.data.entity.Movie
-import com.ismailcanvarli.moviebank.data.repository.MovieRepository
+import com.ismailcanvarli.moviebank.data.repository.RemoteMovieRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val repository: MovieRepository
+    private val repository: RemoteMovieRepository
 ) : ViewModel() {
     private val _movieList = MutableLiveData<List<Movie>>()
     val movieList: LiveData<List<Movie>> = _movieList

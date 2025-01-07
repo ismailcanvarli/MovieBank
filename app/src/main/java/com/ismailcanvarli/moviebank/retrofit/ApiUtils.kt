@@ -2,13 +2,15 @@
 
 package com.ismailcanvarli.moviebank.retrofit
 
+import com.ismailcanvarli.moviebank.data.remote.RemoteMovieApi
+
 class ApiUtils {
     companion object {
         const val BASE_URL = "http://kasimadalan.pe.hu/"
         const val IMAGE_PATH = "movies/images/"
 
-        fun getMovieDao(): MovieDao {
-            return RetrofitClient.getRetrofitClient(BASE_URL).create(MovieDao::class.java)
+        fun getMovieDao(): RemoteMovieApi {
+            return RetrofitClient.getRetrofitClient(BASE_URL).create(RemoteMovieApi::class.java)
         }
 
         fun getImageUrl(imageName: String?): String {
