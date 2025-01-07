@@ -80,6 +80,11 @@ dependencies {
     kapt(libs.hilt.android.compiler)
     // Coil
     implementation(libs.coil.compose)
+    // Room Database
+    implementation(libs.androidx.room.runtime)
+    kapt(libs.androidx.room.compiler)
+    // Room için Coroutine desteği
+    implementation(libs.androidx.room.ktx)
 }
 
 kapt {
