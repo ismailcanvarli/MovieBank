@@ -30,7 +30,7 @@ fun TopBar(navController: NavController) {
             }
         )
     }, navigationIcon = {
-        if (currentRoute != NavigationItem.Home.route) {
+        if (currentRoute == NavigationItem.Details.route) {
             IconButton(onClick = { navController.popBackStack() }) {
                 Icon(
                     painter = painterResource(id = R.drawable.ic_arrow_back),
