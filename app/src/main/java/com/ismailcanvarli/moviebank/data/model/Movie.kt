@@ -1,12 +1,12 @@
-//Created by canVarli on 1/7/2025
+//Created by canVarli on 1/3/2025
 
-package com.ismailcanvarli.moviebank.data.local
+package com.ismailcanvarli.moviebank.data.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "favorites")
-data class FavoriteMovieEntity(
+@Entity(tableName = "movies")
+data class Movie(
     @PrimaryKey val id: Int,
     val name: String,
     val image: String,
@@ -15,5 +15,6 @@ data class FavoriteMovieEntity(
     val rating: Double,
     val year: Int,
     val director: String,
-    val description: String
+    val description: String,
+    var isFavorite: Boolean = false
 )

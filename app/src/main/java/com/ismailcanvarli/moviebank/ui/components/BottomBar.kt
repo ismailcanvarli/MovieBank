@@ -1,6 +1,6 @@
 //Created by canVarli on 1/7/2025
 
-package com.ismailcanvarli.moviebank.ui.component
+package com.ismailcanvarli.moviebank.ui.components
 
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
@@ -18,21 +18,18 @@ fun BottomBar(navController: NavController) {
 
     NavigationBar {
         NavigationItem.entries.filter { it.showInBottomBar }.forEach { item ->
-                NavigationBarItem(icon = {
-                    Icon(
-                        imageVector = item.icon!!, contentDescription = item.title
-                    )
-                },
-                    label = { Text(item.title) },
-                    selected = currentRoute == item.route,
-                    onClick = {
-                        if (currentRoute != item.route) {
-                            navController.navigate(item.route) {
-                                launchSingleTop = true
-                                restoreState = true
-                            }
-                        }
-                    })
-            }
+            NavigationBarItem(icon = {
+                Icon(
+                    imageVector = item.icon!!, contentDescription = item.title
+                )
+            }, label = { Text(item.title) }, selected = currentRoute == item.route, onClick = {
+                if (currentRoute != item.route) {
+                    navController.navigate(item.route) {
+                        launchSingleTop = true
+                        restoreState = true
+                    }
+                }
+            })
+        }
     }
 }

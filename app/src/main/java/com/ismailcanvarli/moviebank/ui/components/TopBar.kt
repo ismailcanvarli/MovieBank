@@ -1,6 +1,6 @@
 //Created by canVarli on 1/7/2025
 
-package com.ismailcanvarli.moviebank.ui.component
+package com.ismailcanvarli.moviebank.ui.components
 
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
