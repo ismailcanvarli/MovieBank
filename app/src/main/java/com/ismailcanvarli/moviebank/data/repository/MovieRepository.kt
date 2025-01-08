@@ -2,9 +2,10 @@
 
 package com.ismailcanvarli.moviebank.data.repository
 
+import com.ismailcanvarli.moviebank.data.model.CrudResponse
 import com.ismailcanvarli.moviebank.data.model.Movie
+import com.ismailcanvarli.moviebank.data.model.MovieCart
 import com.ismailcanvarli.moviebank.data.remote.ApiService
-import com.ismailcanvarli.moviebank.data.room.MovieCartEntity
 import com.ismailcanvarli.moviebank.data.room.MovieDao
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -20,19 +21,31 @@ class MovieRepository @Inject constructor(
         emit(response.movies)
     }
 
-    // Sepetteki filmleri getir (Local)
-    suspend fun getCartMovies(userName: String): Flow<List<MovieCartEntity>> = flow {
-        val cartMovies = movieDao.getCartMovies(userName)
-        emit(cartMovies)
+    // Sepete film ekleme
+    suspend fun addMovieToCart(
+        movie: Movie, orderAmount: Int, userName: String
+    ): CrudResponse {
+        return apiService.addMovieToCart(
+            name = movie.name,
+            image = movie.image,
+            price = movie.price,
+            category = movie.category,
+            rating = movie.rating,
+            year = movie.year,
+            director = movie.director,
+            description = movie.description,
+            orderAmount = orderAmount,
+            userName = userName
+        )
     }
 
-    // Filme ekleme (Remote ve Local)
-    suspend fun addMovieToCart(movieCart: MovieCartEntity) {
-        movieDao.addMovieToCart(movieCart)
+    // Sepeti getir
+    suspend fun getCartMovies(userName: String): List<MovieCart> {
+        return apiService.getCartMovies(userName)
     }
 
-    // Sepetten film silme (Local)
-    suspend fun deleteMovieFromCart(movieCart: MovieCartEntity) {
-        movieDao.deleteMovieFromCart(movieCart)
+    // Sepetten film silme
+    suspend fun deleteMovieFromCart(cartId: Int, userName: String): CrudResponse {
+        return apiService.deleteMovieFromCart(cartId, userName)
     }
 }

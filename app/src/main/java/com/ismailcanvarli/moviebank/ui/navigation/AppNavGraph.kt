@@ -2,11 +2,6 @@
 
 package com.ismailcanvarli.moviebank.ui.navigation
 
-// Compose Temel Bileşenler
-
-// Navigation Kütüphaneleri
-
-// Proje İçindeki Custom Sınıflar ve Bileşenler
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
@@ -84,7 +79,6 @@ fun AppNavGraph(homeViewModel: HomeViewModel) {
                     MovieDetailScreen(movie = it, viewModel = movieDetailViewModel)
                 } ?: Text("Movie not found")
             }
-
         }
     }
 }

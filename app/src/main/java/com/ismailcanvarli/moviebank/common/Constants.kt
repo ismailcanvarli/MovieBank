@@ -6,4 +6,5 @@ object Constants {
     const val MOVIE_FAVORITE_TABLE = "favorite_movies"
     const val MOVIE_CART_TABLE = "movie_cart"
     const val IMAGE_PATH = "movies/images/"
+    const val USER_NAME = "ismailcanvarli"
 }
