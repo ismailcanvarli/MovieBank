@@ -17,15 +17,20 @@ import com.ismailcanvarli.moviebank.ui.navigation.NavigationItem
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopBar(navController: NavController) {
-    val currentBackStackEntry = navController.currentBackStackEntryAsState()
-    val currentRoute = currentBackStackEntry.value?.destination?.route
-    val currentItem = NavigationItem.entries.find { currentRoute?.startsWith(it.route) == true }
-    val title = currentItem?.title ?: "Movie Bank"
-    val canNavigateBack =
-        navController.previousBackStackEntry != null && currentRoute != NavigationItem.Home.route // Ana sayfadaysak geri butonu gösterme
+    val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route
 
-    CenterAlignedTopAppBar(title = { Text(text = title) }, navigationIcon = {
-        if (canNavigateBack) {
+    CenterAlignedTopAppBar(title = {
+        Text(
+            text = when (currentRoute) {
+                NavigationItem.Home.route -> "Home"
+                NavigationItem.Favorites.route -> "Favorites"
+                NavigationItem.Cart.route -> "Cart"
+                NavigationItem.Details.route -> "Details"
+                else -> "Movie Bank"
+            }
+        )
+    }, navigationIcon = {
+        if (currentRoute != NavigationItem.Home.route) {
             IconButton(onClick = { navController.popBackStack() }) {
                 Icon(
                     painter = painterResource(id = R.drawable.ic_arrow_back),

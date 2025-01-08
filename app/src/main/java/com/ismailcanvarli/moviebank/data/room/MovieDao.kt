@@ -2,25 +2,21 @@
 
 package com.ismailcanvarli.moviebank.data.room
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.ismailcanvarli.moviebank.data.model.Movie
 
 @Dao
 interface MovieDao {
-    @Query("SELECT * FROM movies WHERE isFavorite = 1")
-    fun getFavoriteMovies(): LiveData<List<Movie>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertMovie(movie: Movie)
+    suspend fun addMovieToCart(movie: MovieCartEntity)
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAll(movies: List<Movie>)
+    @Query("SELECT * FROM movie_cart WHERE userName = :userName")
+    suspend fun getCartMovies(userName: String): List<MovieCartEntity>
 
     @Delete
-    suspend fun deleteMovie(movie: Movie)
+    suspend fun deleteMovieFromCart(movie: MovieCartEntity)
 }

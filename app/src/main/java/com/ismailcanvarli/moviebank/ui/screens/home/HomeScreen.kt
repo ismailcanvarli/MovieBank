@@ -2,45 +2,46 @@
 
 package com.ismailcanvarli.moviebank.ui.screens.home
 
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Card
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.ismailcanvarli.moviebank.data.model.Movie
 
 @Composable
 fun HomeScreen(navController: NavController, viewModel: HomeViewModel) {
+    // StateFlow'dan gelen veriyi dinliyoruz
+    val movieList by viewModel.movieList.collectAsState()
 
-}
-
-@Composable
-fun MovieItem(movie: Movie, navController: NavController) {
-    Card(modifier = Modifier
-        .padding(4.dp)
-        .clickable { navController.navigate("movieDetailScreen/${movie.id}") }) {
-        Column(
-            modifier = Modifier.padding(8.dp)
-        ) {
-            // Placeholder for movie image
-            Box(
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(8.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
+        items(movieList) { movie ->
+            Card(
                 modifier = Modifier
-                    .height(150.dp)
-                    .fillMaxWidth(),
-                contentAlignment = Alignment.Center
+                    .fillMaxWidth()
+                    .padding(8.dp)
             ) {
-                Text("Movie Image")
+                Column(modifier = Modifier.padding(16.dp)) {
+                    Text(text = movie.name)
+                    Text(text = "Director: ${movie.director}")
+                    Text(text = "Year: ${movie.year}")
+
+                    Spacer(modifier = Modifier.height(8.dp))
+
+                    Button(onClick = {
+                        navController.navigate("movieDetailScreen/${movie.id}")
+                    }) {
+                        Text("View Details")
+                    }
+                }
             }
-            Text(text = movie.name)
         }
     }
 }
-

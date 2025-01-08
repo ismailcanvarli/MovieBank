@@ -1,11 +1,7 @@
 package com.ismailcanvarli.moviebank.data.model
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-
-@Entity(tableName = "movie_cart")
 data class MovieCart(
-    @PrimaryKey(autoGenerate = true) val cartId: Int = 0,
+    val cartId: Int,
     val name: String,
     val image: String,
     val price: Int,

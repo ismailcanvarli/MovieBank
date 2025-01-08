@@ -2,31 +2,38 @@
 
 package com.ismailcanvarli.moviebank.ui.screens.detail
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.ismailcanvarli.moviebank.data.model.Movie
-import com.ismailcanvarli.moviebank.data.repository.MovieRepository
+import com.ismailcanvarli.moviebank.data.repository.FavoritesRepository
+import com.ismailcanvarli.moviebank.data.room.FavoriteMovieEntity
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class MovieDetailViewModel @Inject constructor(
-    private val repository: MovieRepository
+    private val favoritesRepository: FavoritesRepository
 ) : ViewModel() {
-    private val _movieDetail = MutableLiveData<Movie>()
-    val movieDetail: LiveData<Movie> = _movieDetail
 
+    private val _isFavorite = MutableStateFlow(false)
+    val isFavorite: StateFlow<Boolean> = _isFavorite
 
-    fun toggleFavorite(movie: Movie) {
+    fun checkIfFavorite(movieId: Int) {
         viewModelScope.launch {
-            if (movie.isFavorite) {
-                repository.removeFavorite(movie)
+            _isFavorite.value = favoritesRepository.isMovieFavorite(movieId)
+        }
+    }
+
+    fun toggleFavorite(movie: FavoriteMovieEntity) {
+        viewModelScope.launch {
+            if (_isFavorite.value) {
+                favoritesRepository.deleteFavoriteMovie(movie)
             } else {
-                repository.addFavorite(movie)
+                favoritesRepository.addFavoriteMovie(movie)
             }
+            _isFavorite.value = !_isFavorite.value
         }
     }
 }
