@@ -3,7 +3,7 @@
 package com.ismailcanvarli.moviebank.data.remote
 
 import com.ismailcanvarli.moviebank.data.model.CrudResponse
-import com.ismailcanvarli.moviebank.data.model.MovieCart
+import com.ismailcanvarli.moviebank.data.model.MovieCartResponse
 import com.ismailcanvarli.moviebank.data.model.MovieResponse
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -32,7 +32,7 @@ interface ApiService {
 
     @POST("movies/getMovieCart.php")
     @FormUrlEncoded
-    suspend fun getCartMovies(@Field("userName") userName: String): List<MovieCart>
+    suspend fun getCartMovies(@Field("userName") userName: String): MovieCartResponse
 
     @POST("movies/deleteMovie.php")
     @FormUrlEncoded

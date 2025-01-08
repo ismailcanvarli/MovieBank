@@ -6,24 +6,25 @@ import com.ismailcanvarli.moviebank.data.model.CrudResponse
 import com.ismailcanvarli.moviebank.data.model.Movie
 import com.ismailcanvarli.moviebank.data.model.MovieCart
 import com.ismailcanvarli.moviebank.data.remote.ApiService
-import com.ismailcanvarli.moviebank.data.room.MovieDao
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 class MovieRepository @Inject constructor(
-    private val apiService: ApiService, private val movieDao: MovieDao
+    private val apiService: ApiService
 ) {
 
     // Tüm filmleri getir (Remote)
-    suspend fun getAllMovies(): Flow<List<Movie>> = flow {
+    fun getAllMovies(): Flow<List<Movie>> = flow {
         val response = apiService.getAllMovies()
         emit(response.movies)
     }
 
     // Sepete film ekleme
     suspend fun addMovieToCart(
-        movie: Movie, orderAmount: Int, userName: String
+        movie: Movie,
+        orderAmount: Int,
+        userName: String
     ): CrudResponse {
         return apiService.addMovieToCart(
             name = movie.name,
@@ -41,7 +42,8 @@ class MovieRepository @Inject constructor(
 
     // Sepeti getir
     suspend fun getCartMovies(userName: String): List<MovieCart> {
-        return apiService.getCartMovies(userName)
+        val response = apiService.getCartMovies(userName)
+        return response.movieCart
     }
 
     // Sepetten film silme

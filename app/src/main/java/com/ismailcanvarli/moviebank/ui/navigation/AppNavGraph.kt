@@ -50,7 +50,6 @@ fun AppNavGraph(homeViewModel: HomeViewModel) {
             composable(NavigationItem.Home.route) {
                 HomeScreen(navController = navController, viewModel = homeViewModel)
             }
-
             // Favorites Screen
             composable(NavigationItem.Favorites.route) {
                 val favoritesViewModel: FavoritesViewModel = hiltViewModel()
@@ -59,11 +58,8 @@ fun AppNavGraph(homeViewModel: HomeViewModel) {
             // Cart Screen
             composable(NavigationItem.Cart.route) {
                 val movieCartViewModel: MovieCartViewModel = hiltViewModel()
-                MovieCartScreen(
-                    navController = navController, movieCartViewModel = movieCartViewModel
-                )
+                MovieCartScreen(viewModel = movieCartViewModel)
             }
-
             // Movie Detail Screen
             composable(
                 NavigationItem.Details.route,
