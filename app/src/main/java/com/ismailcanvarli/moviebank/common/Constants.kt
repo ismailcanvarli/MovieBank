@@ -10,5 +10,8 @@ object Constants {
     const val MOVIE_CART_TABLE = "movie_cart" // Film sepeti tablosu
     const val IMAGE_PATH = "movies/images/" // Resimlerin bulunduğu dizin
     const val USER_NAME = "ismailcanvarli" // Varsayılan kullanıcı adı
-    const val DISCOUNT_CODE = "DISCOUNT10" // İndirim kodu
+    val DISCOUNT_CODES = mapOf(
+        "DISCOUNT10" to 10, // %10 indirim
+        "WELCOME20" to 20  // %20 indirim
+    )
 }

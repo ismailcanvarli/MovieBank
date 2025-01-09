@@ -22,4 +22,6 @@
     <string name="remove_button">Remove</string>
     <string name="year_label">Year: %1$d</string>
     <string name="total_price">Total Price: $%1$.2f</string>
+    <string name="discount_applied_message">Discount applied: </string>
+    <string name="invalid_discount_message">Invalid discount code</string>
 </resources>

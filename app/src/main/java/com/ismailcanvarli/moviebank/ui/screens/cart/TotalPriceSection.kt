@@ -31,7 +31,8 @@ fun TotalPriceSection(
     appliedDiscount: Int,
     onConfirmCart: () -> Unit
 ) {
-    val totalPrice = cartMovies.sumOf { it.price * it.orderAmount }
+    // Toplam fiyatı Double olarak hesaplayın
+    val totalPrice = cartMovies.sumOf { it.price * it.orderAmount }.toDouble()
     val discountedPrice = totalPrice - (totalPrice * appliedDiscount / 100)
 
     Row(
@@ -42,7 +43,7 @@ fun TotalPriceSection(
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
-            text = stringResource(R.string.total_price, discountedPrice.toFloat()),
+            text = stringResource(R.string.total_price, discountedPrice),
             style = MaterialTheme.typography.titleMedium
         )
         Button(onClick = onConfirmCart) {
