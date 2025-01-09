@@ -3,8 +3,6 @@
 package com.ismailcanvarli.moviebank.ui.navigation
 
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -15,12 +13,10 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.ismailcanvarli.moviebank.R
-import com.ismailcanvarli.moviebank.ui.components.BottomBar
-import com.ismailcanvarli.moviebank.ui.components.TopBar
+import com.ismailcanvarli.moviebank.ui.components.AppScaffold
 import com.ismailcanvarli.moviebank.ui.screens.cart.MovieCartScreen
 import com.ismailcanvarli.moviebank.ui.screens.cart.MovieCartViewModel
 import com.ismailcanvarli.moviebank.ui.screens.detail.MovieDetailScreen
@@ -36,20 +32,11 @@ import com.ismailcanvarli.moviebank.ui.screens.home.HomeViewModel
  *
  * @param homeViewModel Ana ekran için kullanılan ViewModel.
  */
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AppNavGraph(homeViewModel: HomeViewModel) {
     val navController = rememberNavController()
 
-    Scaffold(
-        topBar = { TopBar(navController = navController) },
-        bottomBar = {
-            if (navController.currentBackStackEntryAsState().value?.destination?.route in
-                NavigationItem.entries.filter { it.showInBottomBar }.map { it.route }) {
-                BottomBar(navController = navController)
-            }
-        }
-    ) { innerPadding ->
+    AppScaffold(navController = navController) { innerPadding ->
         NavHost(
             navController = navController,
             startDestination = NavigationItem.Home.route,
