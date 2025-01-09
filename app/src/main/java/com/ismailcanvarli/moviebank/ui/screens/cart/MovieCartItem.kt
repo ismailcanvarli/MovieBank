@@ -19,6 +19,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.ismailcanvarli.moviebank.R
@@ -61,7 +62,7 @@ fun MovieCartItem(
             ) {
                 Icon(
                     painter = painterResource(id = R.drawable.ic_decrease),
-                    contentDescription = "Decrease order amount"
+                    contentDescription = stringResource(R.string.decrease_order_amount)
                 )
             }
             Text(
@@ -72,13 +73,14 @@ fun MovieCartItem(
             IconButton(onClick = onIncrement) {
                 Icon(
                     painter = painterResource(id = R.drawable.ic_increase),
-                    contentDescription = "Increase order amount"
+                    contentDescription = stringResource(R.string.increase_order_amount)
                 )
             }
             Spacer(modifier = Modifier.width(8.dp))
             IconButton(onClick = onRemove) {
                 Icon(
-                    imageVector = Icons.Default.Delete, contentDescription = "Remove all instances"
+                    imageVector = Icons.Default.Delete,
+                    contentDescription = stringResource(R.string.remove_all_instances)
                 )
             }
         }

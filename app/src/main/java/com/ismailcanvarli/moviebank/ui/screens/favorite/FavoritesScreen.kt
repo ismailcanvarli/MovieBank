@@ -28,10 +28,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.ismailcanvarli.moviebank.common.Constants
+import com.ismailcanvarli.moviebank.R
 
 /**
  * Kullanıcının favori filmlerini listeleyen ekran.
@@ -94,7 +96,7 @@ fun FavoritesScreen(
                     Button(
                         onClick = { viewModel.removeFavorite(favoriteMovie) }
                     ) {
-                        Text("Remove")
+                        Text(stringResource(R.string.remove_button))
                     }
                 }
             }

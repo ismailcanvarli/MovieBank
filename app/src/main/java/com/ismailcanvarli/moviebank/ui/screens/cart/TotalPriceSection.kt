@@ -12,8 +12,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.ismailcanvarli.moviebank.data.model.MovieCart
+import com.ismailcanvarli.moviebank.R
 
 /**
  * Sepetin toplam fiyatını ve uygulanan indirimi gösteren bileşen.
@@ -43,7 +45,7 @@ fun TotalPriceSection(
             text = "Total Price: $${discountedPrice}", style = MaterialTheme.typography.titleMedium
         )
         Button(onClick = onConfirmCart) {
-            Text("Confirm Cart")
+            Text(stringResource(R.string.confirm_cart))
         }
     }
 }

@@ -17,9 +17,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.ismailcanvarli.moviebank.common.Constants
+import com.ismailcanvarli.moviebank.R
 
 /**
  * Kullanıcının sepet ekranını oluşturur.
@@ -44,7 +46,7 @@ fun MovieCartScreen(viewModel: MovieCartViewModel) {
     ) {
         if (cartMovies.isEmpty()) {
             Text(
-                text = "Your cart is empty.",
+                text = stringResource(R.string.cart_empty_message),
                 style = MaterialTheme.typography.bodyMedium,
                 textAlign = TextAlign.Center,
                 modifier = Modifier.fillMaxSize()

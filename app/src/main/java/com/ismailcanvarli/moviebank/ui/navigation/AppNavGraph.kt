@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -17,6 +18,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.ismailcanvarli.moviebank.R
 import com.ismailcanvarli.moviebank.ui.components.BottomBar
 import com.ismailcanvarli.moviebank.ui.components.TopBar
 import com.ismailcanvarli.moviebank.ui.screens.cart.MovieCartScreen
@@ -76,7 +78,7 @@ fun AppNavGraph(homeViewModel: HomeViewModel) {
 
                 selectedMovie?.let {
                     MovieDetailScreen(movie = it, viewModel = movieDetailViewModel)
-                } ?: Text("Movie not found")
+                } ?: Text(stringResource(R.string.movie_not_found))
             }
         }
     }

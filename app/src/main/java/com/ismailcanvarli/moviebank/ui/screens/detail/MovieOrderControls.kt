@@ -14,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.ismailcanvarli.moviebank.R
 
@@ -36,7 +37,7 @@ fun MovieOrderControls(orderAmount: Int, onDecrease: () -> Unit, onIncrease: () 
         ) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_decrease),
-                contentDescription = "Decrease order amount"
+                contentDescription = stringResource(R.string.decrease_order_amount)
             )
         }
         Text(
@@ -50,7 +51,7 @@ fun MovieOrderControls(orderAmount: Int, onDecrease: () -> Unit, onIncrease: () 
         ) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_increase),
-                contentDescription = "Increase order amount"
+                contentDescription = stringResource(R.string.increase_order_amount)
             )
         }
     }

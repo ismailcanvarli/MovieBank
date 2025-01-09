@@ -17,7 +17,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.ismailcanvarli.moviebank.R
 
 /**
  * Kullanıcının indirim kodu girmesini ve uygulamasını sağlayan bileşen.
@@ -36,12 +38,12 @@ fun DiscountCodeSection(onApplyDiscount: (String) -> Unit) {
         TextField(
             value = discountCode,
             onValueChange = { discountCode = it },
-            label = { Text("Enter Discount Code") },
+            label = { Text(stringResource(R.string.enter_discount_code)) },
             modifier = Modifier.weight(1f)
         )
         Spacer(modifier = Modifier.width(8.dp))
         Button(onClick = { onApplyDiscount(discountCode) }) {
-            Text("Apply")
+            Text(stringResource(R.string.apply_button))
         }
     }
 }

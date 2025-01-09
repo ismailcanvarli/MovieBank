@@ -7,6 +7,8 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import com.ismailcanvarli.moviebank.R
 
 /**
  * Bir filmi favorilere eklemek için kullanılan buton bileşeni.
@@ -19,6 +21,6 @@ fun FavoriteButton(onAddToFavorite: () -> Unit) {
         onClick = onAddToFavorite,
         modifier = Modifier.fillMaxWidth()
     ) {
-        Text("Add to Favorites")
+        Text(stringResource(R.string.add_to_favorites))
     }
 }
