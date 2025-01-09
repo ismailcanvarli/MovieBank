@@ -7,6 +7,8 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import com.ismailcanvarli.moviebank.R
 
 /**
  * Sepete film ekleme işlemini gerçekleştiren buton bileşeni.
@@ -21,6 +23,8 @@ fun AddToCartButton(orderAmount: Int, onAddToCart: () -> Unit) {
         onClick = onAddToCart,
         modifier = Modifier.fillMaxWidth()
     ) {
-        Text("Add $orderAmount to Cart")
+        Text(
+            text = stringResource(R.string.add_to_cart, orderAmount)
+        )
     }
 }
