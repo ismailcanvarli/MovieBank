@@ -68,16 +68,17 @@ fun MovieCartScreen(viewModel: MovieCartViewModel) {
             }
             Column {
                 DiscountCodeSection { enteredCode ->
-                    if (enteredCode == Constants.DISCOUNT_CODE) {
-                        appliedDiscount.value = 10
-                    } else {
-                        appliedDiscount.value = 0
-                    }
+                    val discount = Constants.DISCOUNT_CODES[enteredCode] ?: 0
+                    appliedDiscount.value = discount
+                    discount > 0
                 }
                 TotalPriceSection(
                     cartMovies = cartMovies,
                     appliedDiscount = appliedDiscount.value,
-                    onConfirmCart = { /* Sepeti onayla işlemleri */ }
+                    onConfirmCart = {
+                        // TODO: Sepet onaylandığında yapılacak işlemler
+                        println("Sepet onaylandı, indirim: %${appliedDiscount.value}")
+                    }
                 )
             }
         }
