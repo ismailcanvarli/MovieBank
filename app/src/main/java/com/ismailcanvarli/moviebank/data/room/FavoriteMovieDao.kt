@@ -17,7 +17,7 @@ interface FavoriteMovieDao {
     suspend fun addFavoriteMovie(movie: FavoriteMovieEntity)
 
     @Query("SELECT * FROM ${Constants.MOVIE_FAVORITE_TABLE}")
-    fun getFavoriteMovies(): Flow<List<FavoriteMovieEntity>> // `Flow` kullanımı ile sürekli dinleme sağlanır.
+    fun getFavoriteMovies(): Flow<List<FavoriteMovieEntity>>
 
     @Delete
     suspend fun deleteFavoriteMovie(movie: FavoriteMovieEntity)

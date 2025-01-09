@@ -6,7 +6,6 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ismailcanvarli.moviebank.common.Constants
-import com.ismailcanvarli.moviebank.data.model.CrudResponse
 import com.ismailcanvarli.moviebank.data.model.MovieCart
 import com.ismailcanvarli.moviebank.data.model.toMovie
 import com.ismailcanvarli.moviebank.data.repository.MovieRepository
@@ -22,7 +21,6 @@ class MovieCartViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val _cartMovies = MutableStateFlow<List<MovieCart>>(emptyList())
-    private val _deleteResponse = MutableStateFlow<CrudResponse?>(null)
     val cartMovies: StateFlow<List<MovieCart>> = _cartMovies
 
     fun fetchCartMovies(userName: String) {
