@@ -5,6 +5,7 @@ import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.ismailcanvarli.moviebank.ui.navigation.NavigationItem
@@ -21,10 +22,14 @@ fun BottomBar(navController: NavController) {
     val currentRoute = navBackStackEntry.value?.destination?.route
 
     NavigationBar {
-        NavigationItem.entries.filter { it.showInBottomBar }.forEach { item ->
+        NavigationItem.entries.forEach { item ->
             NavigationBarItem(
-                icon = { Icon(imageVector = item.icon!!, contentDescription = item.title) },
-                label = { Text(item.title) },
+                icon = {
+                    item.icon?.let {
+                        Icon(imageVector = it, contentDescription = stringResource(item.titleResId))
+                    }
+                },
+                label = { Text(stringResource(item.titleResId)) },
                 selected = currentRoute == item.route,
                 onClick = {
                     if (currentRoute != item.route) {

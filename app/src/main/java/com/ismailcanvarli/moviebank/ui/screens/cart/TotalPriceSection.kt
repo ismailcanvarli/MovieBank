@@ -42,7 +42,8 @@ fun TotalPriceSection(
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
-            text = "Total Price: $${discountedPrice}", style = MaterialTheme.typography.titleMedium
+            text = stringResource(R.string.total_price, discountedPrice.toFloat()),
+            style = MaterialTheme.typography.titleMedium
         )
         Button(onClick = onConfirmCart) {
             Text(stringResource(R.string.confirm_cart))

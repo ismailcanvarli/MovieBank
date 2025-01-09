@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Movie Bank</string>
+    <string name="add_to_cart">Sepete %1$d ekle</string>
+    <string name="add_to_favorites">Favorilere Ekle</string>
+    <string name="apply_button">Uygula</string>
+    <string name="back_button_description">Geri</string>
+    <string name="cart_empty_message">Sepetiniz boş.</string>
+    <string name="cart_title">Sepet</string>
+    <string name="confirm_cart">Sepeti Onayla</string>
+    <string name="decrease_order_amount">Sipariş miktarını azalt</string>
+    <string name="details_title">Detaylar</string>
+    <string name="director_label">Yönetmen: %1$s</string>
+    <string name="enter_discount_code">İndirim Kodunu Girin</string>
+    <string name="favorites_title">Favoriler</string>
+    <string name="home_title">Ana Sayfa</string>
+    <string name="increase_order_amount">Sipariş miktarını artır</string>
+    <string name="movie_bank_title">Film Bankası</string>
+    <string name="movie_details_title">Film Detayları</string>
+    <string name="movie_not_found">Film bulunamadı</string>
+    <string name="rating_label">Puan: %1$.1f</string>
+    <string name="remove_all_instances">Tüm öğeleri kaldır</string>
+    <string name="remove_button">Kaldır</string>
+    <string name="total_price">Toplam Tutar: $%1$.2f</string>
+    <string name="year_label">Yıl: %1$d</string>
+</resources>

@@ -7,24 +7,28 @@ import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.ui.graphics.vector.ImageVector
+import com.ismailcanvarli.moviebank.R
 
 /**
  * Navigasyon öğelerini tanımlar.
  * Her bir öğe, rotası ve başlığıyla birlikte temsil edilir.
  *
  * @param route Rota adı.
- * @param title Navigasyon öğesinin başlığı.
  * @param icon İkon vektörü (null olabilir).
  * @param showInBottomBar Alt navigasyon çubuğunda gösterilip gösterilmeyeceği.
  */
-enum class NavigationItem(
+sealed class NavigationItem(
     val route: String,
-    val title: String,
     val icon: ImageVector?,
-    val showInBottomBar: Boolean
+    val showInBottomBar: Boolean,
+    val titleResId: Int
 ) {
-    Home("homeScreen", "Home", Icons.Default.Home, true),
-    Favorites("favoritesScreen", "Favorites", Icons.Default.Favorite, true),
-    Cart("movieCartScreen", "Cart", Icons.Default.ShoppingCart, true),
-    Details("movieDetailScreen/{movieId}", "Movie Details", null, false)
+    object Home : NavigationItem("homeScreen", Icons.Default.Home, true, R.string.home_title)
+    object Favorites : NavigationItem("favoritesScreen", Icons.Default.Favorite, true, R.string.favorites_title)
+    object Cart : NavigationItem("movieCartScreen", Icons.Default.ShoppingCart, true, R.string.cart_title)
+    object Details : NavigationItem("movieDetailScreen/{movieId}", null, false, R.string.details_title)
+
+    companion object {
+        val entries = listOf(Home, Favorites, Cart)
+    }
 }

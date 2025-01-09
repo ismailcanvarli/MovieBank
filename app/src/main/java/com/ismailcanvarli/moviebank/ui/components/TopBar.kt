@@ -9,6 +9,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.ismailcanvarli.moviebank.R
@@ -25,14 +26,15 @@ import com.ismailcanvarli.moviebank.ui.navigation.NavigationItem
 fun TopBar(navController: NavController) {
     val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route
 
-    CenterAlignedTopAppBar(title = {
+    CenterAlignedTopAppBar(
+        title = {
             Text(
                 text = when (currentRoute) {
-                    NavigationItem.Home.route -> "Home"
-                    NavigationItem.Favorites.route -> "Favorites"
-                    NavigationItem.Cart.route -> "Cart"
-                    NavigationItem.Details.route -> "Details"
-                    else -> "Movie Bank"
+                    NavigationItem.Home.route -> stringResource(R.string.home_title)
+                    NavigationItem.Favorites.route -> stringResource(R.string.favorites_title)
+                    NavigationItem.Cart.route -> stringResource(R.string.cart_title)
+                    NavigationItem.Details.route -> stringResource(R.string.details_title)
+                    else -> stringResource(R.string.movie_bank_title)
                 }
             )
         },
@@ -41,7 +43,7 @@ fun TopBar(navController: NavController) {
                 IconButton(onClick = { navController.popBackStack() }) {
                     Icon(
                         painter = painterResource(id = R.drawable.ic_arrow_back),
-                        contentDescription = "Back"
+                        contentDescription = stringResource(R.string.back_button_description)
                     )
                 }
             }

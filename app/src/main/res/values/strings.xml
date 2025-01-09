@@ -1,12 +1,15 @@
 <resources>
+    <string name="add_to_cart">Add %1$d to Cart</string>
     <string name="add_to_favorites">Add to Favorites</string>
     <string name="apply_button">Apply</string>
     <string name="app_name">Movie Bank</string>
+    <string name="back_button_description">Back</string>
     <string name="cart_empty_message">Your cart is empty.</string>
     <string name="cart_title">Cart</string>
     <string name="confirm_cart">Confirm Cart</string>
     <string name="decrease_order_amount">Decrease order amount</string>
     <string name="details_title">Details</string>
+    <string name="director_label">Director: %1$s</string>
     <string name="enter_discount_code">Enter Discount Code</string>
     <string name="favorites_title">Favorites</string>
     <string name="home_title">Home</string>
@@ -14,6 +17,9 @@
     <string name="movie_bank_title">Movie Bank</string>
     <string name="movie_details_title">Movie Details</string>
     <string name="movie_not_found">Movie not found</string>
+    <string name="rating_label">Rating: %1$.1f</string>
     <string name="remove_all_instances">Remove all instances</string>
     <string name="remove_button">Remove</string>
+    <string name="year_label">Year: %1$d</string>
+    <string name="total_price">Total Price: $%1$.2f</string>
 </resources>
