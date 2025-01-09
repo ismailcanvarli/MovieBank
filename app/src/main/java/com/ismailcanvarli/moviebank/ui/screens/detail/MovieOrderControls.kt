@@ -26,7 +26,7 @@ fun MovieOrderControls(orderAmount: Int, onDecrease: () -> Unit, onIncrease: () 
             onClick = onDecrease, modifier = Modifier.size(48.dp)
         ) {
             Icon(
-                painter = painterResource(id = R.drawable.ic_remove),
+                painter = painterResource(id = R.drawable.ic_decrease),
                 contentDescription = "Decrease order amount"
             )
         }
@@ -39,7 +39,7 @@ fun MovieOrderControls(orderAmount: Int, onDecrease: () -> Unit, onIncrease: () 
             onClick = onIncrease, modifier = Modifier.size(48.dp)
         ) {
             Icon(
-                painter = painterResource(id = R.drawable.ic_add),
+                painter = painterResource(id = R.drawable.ic_increase),
                 contentDescription = "Increase order amount"
             )
         }

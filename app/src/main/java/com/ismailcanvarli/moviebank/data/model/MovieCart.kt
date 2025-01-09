@@ -13,3 +13,17 @@ data class MovieCart(
     val orderAmount: Int,
     val userName: String
 )
+
+fun MovieCart.toMovie(): Movie {
+    return Movie(
+        id = this.cartId, // Sepetteki id, veritabanı id'sine eşdeğer olmayabilir
+        name = this.name,
+        image = this.image,
+        price = this.price,
+        category = this.category,
+        rating = this.rating,
+        year = this.year,
+        director = this.director,
+        description = this.description
+    )
+}

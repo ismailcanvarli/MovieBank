@@ -32,7 +32,7 @@ fun MovieDetailScreen(
     userName: String = Constants.USER_NAME,
 ) {
     val isFavorite by viewModel.isFavorite.collectAsState()
-    var orderAmount by remember { mutableIntStateOf(0) }
+    var orderAmount by remember { mutableIntStateOf(1) }
 
     LaunchedEffect(key1 = movie.id) {
         viewModel.checkIfFavorite(movie.id)
@@ -48,7 +48,7 @@ fun MovieDetailScreen(
         MovieDetailCard(movie)
         Spacer(modifier = Modifier.height(12.dp))
         MovieOrderControls(orderAmount, { if (orderAmount > 0) orderAmount-- }, { orderAmount++ })
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(12.dp))
         AddToCartButton(orderAmount) {
             if (orderAmount > 0) {
                 viewModel.addMovieToCart(
@@ -56,7 +56,7 @@ fun MovieDetailScreen(
                 )
             }
         }
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(12.dp))
         FavoriteToggleButton(isFavorite) {
             viewModel.toggleFavorite(
                 FavoriteMovieEntity(
