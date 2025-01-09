@@ -59,7 +59,7 @@ fun MovieCartScreen(viewModel: MovieCartViewModel) {
             Column {
                 DiscountCodeSection { enteredCode ->
                     if (enteredCode == Constants.DISCOUNT_CODE) {
-                        appliedDiscount.value = 10 // İndirim oranı
+                        appliedDiscount.value = 10
                     } else {
                         appliedDiscount.value = 0
                     }

@@ -32,10 +32,10 @@ fun TotalPriceSection(
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
-            text = "Toplam Fiyat: $${discountedPrice}", style = MaterialTheme.typography.titleMedium
+            text = "Total Price: $${discountedPrice}", style = MaterialTheme.typography.titleMedium
         )
         Button(onClick = onConfirmCart) {
-            Text("Sepeti Onayla")
+            Text("Confirm Cart")
         }
     }
 }

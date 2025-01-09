@@ -32,12 +32,12 @@ fun DiscountCodeSection(onApplyDiscount: (String) -> Unit) {
         TextField(
             value = discountCode,
             onValueChange = { discountCode = it },
-            label = { Text("İndirim Kodu Giriniz") },
+            label = { Text("Enter Discount Code") },
             modifier = Modifier.weight(1f)
         )
         Spacer(modifier = Modifier.width(8.dp))
         Button(onClick = { onApplyDiscount(discountCode) }) {
-            Text("Uygula")
+            Text("Apply")
         }
     }
 }
