@@ -24,4 +24,7 @@ interface FavoriteMovieDao {
 
     @Query("SELECT EXISTS(SELECT 1 FROM ${Constants.MOVIE_FAVORITE_TABLE} WHERE movieId = :movieId)")
     suspend fun isMovieFavorite(movieId: Int): Boolean
+
+    @Query("SELECT * FROM favorite_movies WHERE movieId = :movieId LIMIT 1")
+    suspend fun getFavoriteMovieById(movieId: Int): FavoriteMovieEntity?
 }

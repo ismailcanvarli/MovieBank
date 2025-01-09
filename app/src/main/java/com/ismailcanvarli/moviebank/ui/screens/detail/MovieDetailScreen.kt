@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
@@ -22,7 +21,6 @@ import com.ismailcanvarli.moviebank.common.Constants
 import com.ismailcanvarli.moviebank.data.model.Movie
 import com.ismailcanvarli.moviebank.data.room.FavoriteMovieEntity
 import com.ismailcanvarli.moviebank.ui.components.AddToCartButton
-import com.ismailcanvarli.moviebank.ui.components.FavoriteToggleButton
 import com.ismailcanvarli.moviebank.ui.components.MovieDetailCard
 
 @Composable
@@ -31,7 +29,6 @@ fun MovieDetailScreen(
     viewModel: MovieDetailViewModel,
     userName: String = Constants.USER_NAME,
 ) {
-    val isFavorite by viewModel.isFavorite.collectAsState()
     var orderAmount by remember { mutableIntStateOf(1) }
 
     LaunchedEffect(key1 = movie.id) {
@@ -57,8 +54,8 @@ fun MovieDetailScreen(
             }
         }
         Spacer(modifier = Modifier.height(12.dp))
-        FavoriteToggleButton(isFavorite) {
-            viewModel.toggleFavorite(
+        FavoriteButton {
+            viewModel.addFavorite(
                 FavoriteMovieEntity(
                     movieId = movie.id,
                     name = movie.name,

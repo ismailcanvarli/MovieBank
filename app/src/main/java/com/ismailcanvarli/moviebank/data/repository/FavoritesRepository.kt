@@ -17,7 +17,7 @@ class FavoritesRepository @Inject constructor(
 
     // Favori film kontrolü
     suspend fun isMovieFavorite(movieId: Int): Boolean {
-        return favoriteMovieDao.isMovieFavorite(movieId)
+        return favoriteMovieDao.getFavoriteMovieById(movieId) != null
     }
 
     // Favori filme ekleme

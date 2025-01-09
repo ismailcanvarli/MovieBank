@@ -10,7 +10,6 @@ import com.ismailcanvarli.moviebank.data.repository.MovieRepository
 import com.ismailcanvarli.moviebank.data.room.FavoriteMovieEntity
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -22,7 +21,6 @@ class MovieDetailViewModel @Inject constructor(
 
     private val _isFavorite = MutableStateFlow(false)
     private val _addToCartMessage = MutableStateFlow<String?>(null)
-    val isFavorite: StateFlow<Boolean> = _isFavorite
 
     fun checkIfFavorite(movieId: Int) {
         viewModelScope.launch {
@@ -30,14 +28,13 @@ class MovieDetailViewModel @Inject constructor(
         }
     }
 
-    fun toggleFavorite(movie: FavoriteMovieEntity) {
+    fun addFavorite(movie: FavoriteMovieEntity) {
         viewModelScope.launch {
-            if (_isFavorite.value) {
-                favoritesRepository.deleteFavoriteMovie(movie)
-            } else {
+            val isAlreadyFavorite = favoritesRepository.isMovieFavorite(movie.movieId)
+            if (!isAlreadyFavorite) {
                 favoritesRepository.addFavoriteMovie(movie)
+                _isFavorite.value = true
             }
-            _isFavorite.value = !_isFavorite.value
         }
     }
 

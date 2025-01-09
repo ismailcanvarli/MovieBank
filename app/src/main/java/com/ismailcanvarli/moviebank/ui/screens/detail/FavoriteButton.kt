@@ -1,6 +1,6 @@
 //Created by canVarli on 1/9/2025
 
-package com.ismailcanvarli.moviebank.ui.components
+package com.ismailcanvarli.moviebank.ui.screens.detail
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Button
@@ -9,10 +9,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 
 @Composable
-fun FavoriteToggleButton(isFavorite: Boolean, onToggleFavorite: () -> Unit) {
+fun FavoriteButton(onAddToFavorite: () -> Unit) {
     Button(
-        onClick = onToggleFavorite, modifier = Modifier.fillMaxWidth()
+        onClick = onAddToFavorite,
+        modifier = Modifier.fillMaxWidth()
     ) {
-        Text(if (isFavorite) "Remove from Favorites" else "Add to Favorites")
+        Text("Add to Favorites")
     }
 }
