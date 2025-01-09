@@ -20,21 +20,24 @@ class FavoritesViewModel @Inject constructor(
 
     val favoriteMovies: StateFlow<List<FavoriteMovieEntity>> =
         favoritesRepository.getFavoriteMovies().stateIn(
-                viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList()
-            )
+            viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList()
+        )
 
+    // Favorilere ekleme işlemi
     fun addFavorite(movie: FavoriteMovieEntity) {
         viewModelScope.launch {
             favoritesRepository.addFavoriteMovie(movie)
         }
     }
 
+    // Favorilerden çıkarma işlemi
     fun removeFavorite(movie: FavoriteMovieEntity) {
         viewModelScope.launch {
             favoritesRepository.deleteFavoriteMovie(movie)
         }
     }
 
+    // Favori mi kontrolü
     fun isFavorite(movieId: Int): Boolean {
         return favoriteMovies.value.any { it.movieId == movieId }
     }

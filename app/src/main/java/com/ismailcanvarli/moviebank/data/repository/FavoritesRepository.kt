@@ -10,20 +10,19 @@ import javax.inject.Inject
 class FavoritesRepository @Inject constructor(
     private val favoriteMovieDao: FavoriteMovieDao
 ) {
-
     // Favori filmleri getir
     fun getFavoriteMovies(): Flow<List<FavoriteMovieEntity>> {
-        return favoriteMovieDao.getFavoriteMovies() // DAO'dan gelen Flow'u direkt dönüyoruz.
-    }
-
-    // Favori filme ekleme
-    suspend fun addFavoriteMovie(movie: FavoriteMovieEntity) {
-        favoriteMovieDao.addFavoriteMovie(movie)
+        return favoriteMovieDao.getFavoriteMovies()
     }
 
     // Favori film kontrolü
     suspend fun isMovieFavorite(movieId: Int): Boolean {
         return favoriteMovieDao.isMovieFavorite(movieId)
+    }
+
+    // Favori filme ekleme
+    suspend fun addFavoriteMovie(movie: FavoriteMovieEntity) {
+        favoriteMovieDao.addFavoriteMovie(movie)
     }
 
     // Favori film silme

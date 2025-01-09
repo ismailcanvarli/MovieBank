@@ -21,9 +21,8 @@ class MovieDetailViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val _isFavorite = MutableStateFlow(false)
-    private val _addToCartMessage = MutableStateFlow<String?>(null) // Mesajı burada tut
+    private val _addToCartMessage = MutableStateFlow<String?>(null)
     val isFavorite: StateFlow<Boolean> = _isFavorite
-    val addToCartMessage: StateFlow<String?> = _addToCartMessage
 
     fun checkIfFavorite(movieId: Int) {
         viewModelScope.launch {
@@ -47,9 +46,5 @@ class MovieDetailViewModel @Inject constructor(
             val response = movieRepository.addMovieToCart(movie, orderAmount, userName)
             _addToCartMessage.value = response.message
         }
-    }
-
-    fun clearAddToCartMessage() {
-        _addToCartMessage.value = null
     }
 }
