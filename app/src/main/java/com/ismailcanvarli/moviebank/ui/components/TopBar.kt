@@ -14,29 +14,37 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import com.ismailcanvarli.moviebank.R
 import com.ismailcanvarli.moviebank.ui.navigation.NavigationItem
 
+/**
+ * Uygulamanın üst navigasyon çubuğunu oluşturur.
+ * Ekrana özel başlıkları ve geri dönüş işlemini yönetir.
+ *
+ * @param navController Navigasyon işlemlerini yöneten kontrolör.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopBar(navController: NavController) {
     val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route
 
     CenterAlignedTopAppBar(title = {
-        Text(
-            text = when (currentRoute) {
-                NavigationItem.Home.route -> "Home"
-                NavigationItem.Favorites.route -> "Favorites"
-                NavigationItem.Cart.route -> "Cart"
-                NavigationItem.Details.route -> "Details"
-                else -> "Movie Bank"
-            }
-        )
-    }, navigationIcon = {
-        if (currentRoute == NavigationItem.Details.route) {
-            IconButton(onClick = { navController.popBackStack() }) {
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_arrow_back),
-                    contentDescription = "Back"
-                )
+            Text(
+                text = when (currentRoute) {
+                    NavigationItem.Home.route -> "Home"
+                    NavigationItem.Favorites.route -> "Favorites"
+                    NavigationItem.Cart.route -> "Cart"
+                    NavigationItem.Details.route -> "Details"
+                    else -> "Movie Bank"
+                }
+            )
+        },
+        navigationIcon = {
+            if (currentRoute == NavigationItem.Details.route) {
+                IconButton(onClick = { navController.popBackStack() }) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_arrow_back),
+                        contentDescription = "Back"
+                    )
+                }
             }
         }
-    })
+    )
 }

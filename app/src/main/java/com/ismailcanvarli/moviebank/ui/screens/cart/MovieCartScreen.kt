@@ -21,6 +21,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.ismailcanvarli.moviebank.common.Constants
 
+/**
+ * Kullanıcının sepet ekranını oluşturur.
+ * Sepetteki tüm filmleri gösterir, toplam fiyatı hesaplar ve indirim kodu ekler.
+ *
+ * @param viewModel Sepet verilerini yöneten ViewModel.
+ */
 @Composable
 fun MovieCartScreen(viewModel: MovieCartViewModel) {
     val cartMovies by viewModel.cartMovies.collectAsState()
@@ -48,12 +54,14 @@ fun MovieCartScreen(viewModel: MovieCartViewModel) {
                 modifier = Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 items(cartMovies) { movie ->
-                    MovieCartItem(movie = movie,
+                    MovieCartItem(
+                        movie = movie,
                         onIncrement = { viewModel.incrementMovieAmount(movie) },
                         onDecrement = { viewModel.decrementMovieAmount(movie) },
                         onRemove = {
                             viewModel.deleteAllInstancesOfMovie(movie.name, Constants.USER_NAME)
-                        })
+                        }
+                    )
                 }
             }
             Column {
@@ -64,9 +72,11 @@ fun MovieCartScreen(viewModel: MovieCartViewModel) {
                         appliedDiscount.value = 0
                     }
                 }
-                TotalPriceSection(cartMovies = cartMovies,
+                TotalPriceSection(
+                    cartMovies = cartMovies,
                     appliedDiscount = appliedDiscount.value,
-                    onConfirmCart = { /* Sepeti onayla işlemleri */ })
+                    onConfirmCart = { /* Sepeti onayla işlemleri */ }
+                )
             }
         }
     }

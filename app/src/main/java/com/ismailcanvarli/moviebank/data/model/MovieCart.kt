@@ -1,5 +1,20 @@
 package com.ismailcanvarli.moviebank.data.model
 
+/**
+ * Sepetteki filmleri temsil eden model.
+ *
+ * @property cartId Sepet öğesinin ID'si.
+ * @property name Filmin adı.
+ * @property image Filmin görsel yolu.
+ * @property price Filmin fiyatı.
+ * @property category Filmin kategorisi.
+ * @property rating Filmin kullanıcı oylaması.
+ * @property year Filmin yayın yılı.
+ * @property director Filmin yönetmeni.
+ * @property description Filmin açıklaması.
+ * @property orderAmount Sipariş edilen miktar.
+ * @property userName Kullanıcı adı.
+ */
 data class MovieCart(
     val cartId: Int,
     val name: String,
@@ -14,9 +29,12 @@ data class MovieCart(
     val userName: String
 )
 
+/**
+ * Sepetteki bir filmi genel bir Movie nesnesine dönüştürür.
+ */
 fun MovieCart.toMovie(): Movie {
     return Movie(
-        id = this.cartId, // Sepetteki id, veritabanı id'sine eşdeğer olmayabilir
+        id = this.cartId,
         name = this.name,
         image = this.image,
         price = this.price,

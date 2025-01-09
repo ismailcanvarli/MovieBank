@@ -23,6 +23,14 @@ import com.ismailcanvarli.moviebank.data.room.FavoriteMovieEntity
 import com.ismailcanvarli.moviebank.ui.components.AddToCartButton
 import com.ismailcanvarli.moviebank.ui.components.MovieDetailCard
 
+/**
+ * Film detaylarını ve kullanıcı etkileşimlerini yöneten ekran.
+ * Kullanıcı filme sipariş verebilir veya favorilere ekleyebilir.
+ *
+ * @param movie Gösterilecek film bilgisi.
+ * @param viewModel Detay ekranını yöneten ViewModel.
+ * @param userName Kullanıcının adı (varsayılan değer Constants.USER_NAME).
+ */
 @Composable
 fun MovieDetailScreen(
     movie: Movie,

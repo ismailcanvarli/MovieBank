@@ -4,6 +4,20 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.ismailcanvarli.moviebank.common.Constants
 
+/**
+ * Favori filmleri temsil eden Room veritabanı varlığı.
+ *
+ * @property id Otomatik oluşturulan birincil anahtar.
+ * @property movieId Filmin benzersiz ID'si.
+ * @property name Filmin adı.
+ * @property image Filmin görsel yolu.
+ * @property price Filmin fiyatı.
+ * @property category Filmin kategorisi.
+ * @property rating Filmin kullanıcı puanı.
+ * @property year Filmin yayın yılı.
+ * @property director Filmin yönetmeni.
+ * @property description Filmin açıklaması.
+ */
 @Entity(tableName = Constants.MOVIE_FAVORITE_TABLE)
 data class FavoriteMovieEntity(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,

@@ -12,6 +12,12 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/**
+ * Ana ekranın verilerini yöneten ViewModel.
+ * Tüm filmleri getirir ve kullanıcıya sunar.
+ *
+ * @property repository Filmlerle ilgili işlemleri yöneten repository.
+ */
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val repository: MovieRepository
@@ -24,6 +30,9 @@ class HomeViewModel @Inject constructor(
         fetchMovies()
     }
 
+    /**
+     * Tüm filmleri getirir ve listeyi günceller.
+     */
     private fun fetchMovies() {
         viewModelScope.launch {
             repository.getAllMovies().collect { movies ->

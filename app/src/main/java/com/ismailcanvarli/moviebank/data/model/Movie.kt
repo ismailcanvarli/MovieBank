@@ -4,6 +4,19 @@ package com.ismailcanvarli.moviebank.data.model
 
 import com.google.gson.annotations.SerializedName
 
+/**
+ * Film verilerini temsil eden model.
+ *
+ * @property id Filmin ID'si.
+ * @property name Filmin adı.
+ * @property image Filmin görsel yolu.
+ * @property price Filmin fiyatı.
+ * @property category Filmin kategorisi.
+ * @property rating Filmin kullanıcı oylaması.
+ * @property year Filmin yayın yılı.
+ * @property director Filmin yönetmeni.
+ * @property description Filmin açıklaması.
+ */
 data class Movie(
     @SerializedName("id") val id: Int,
     @SerializedName("name") val name: String,

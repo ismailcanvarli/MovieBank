@@ -8,6 +8,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 
+/**
+ * Bir filmi favorilere eklemek için kullanılan buton bileşeni.
+ *
+ * @param onAddToFavorite Favorilere ekleme işlemini tetikleyen callback.
+ */
 @Composable
 fun FavoriteButton(onAddToFavorite: () -> Unit) {
     Button(

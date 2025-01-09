@@ -15,6 +15,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.ismailcanvarli.moviebank.data.model.MovieCart
 
+/**
+ * Sepetin toplam fiyatını ve uygulanan indirimi gösteren bileşen.
+ * Kullanıcının sepeti onaylamasına olanak tanır.
+ *
+ * @param cartMovies Sepetteki filmlerin listesi.
+ * @param appliedDiscount Uygulanan indirim yüzdesi.
+ * @param onConfirmCart Sepeti onaylama işlemini tetikleyen callback.
+ */
 @Composable
 fun TotalPriceSection(
     cartMovies: List<MovieCart>,

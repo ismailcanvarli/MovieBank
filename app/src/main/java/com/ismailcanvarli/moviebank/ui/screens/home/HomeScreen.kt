@@ -17,6 +17,13 @@ import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.ismailcanvarli.moviebank.common.Constants
 
+/**
+ * Tüm filmleri listeleyen ana ekran.
+ * Kullanıcı bir filmin detay sayfasına geçiş yapabilir.
+ *
+ * @param navController Navigasyon işlemlerini yöneten kontrolör.
+ * @param viewModel Ana ekranı yöneten ViewModel.
+ */
 @Composable
 fun HomeScreen(navController: NavController, viewModel: HomeViewModel) {
     val movieList by viewModel.movieList.collectAsState()
@@ -34,13 +41,13 @@ fun HomeScreen(navController: NavController, viewModel: HomeViewModel) {
                     .padding(8.dp)
                     .clickable {
                         navController.navigate("movieDetailScreen/${movie.id}")
-                    }, elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+                    },
+                elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
             ) {
                 Row(
                     modifier = Modifier.padding(16.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    // Film görseli
                     AsyncImage(
                         model = "${Constants.BASE_URL}${Constants.IMAGE_PATH}${movie.image}",
                         contentDescription = movie.name,
@@ -49,7 +56,6 @@ fun HomeScreen(navController: NavController, viewModel: HomeViewModel) {
                             .clip(RoundedCornerShape(8.dp))
                     )
                     Spacer(modifier = Modifier.width(16.dp))
-                    // Film bilgileri
                     Column {
                         Text(
                             text = movie.name, style = MaterialTheme.typography.titleMedium

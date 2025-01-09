@@ -33,6 +33,13 @@ import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.ismailcanvarli.moviebank.common.Constants
 
+/**
+ * Kullanıcının favori filmlerini listeleyen ekran.
+ * Filmlerin detay sayfasına geçiş yapabilir veya favorilerden çıkarabilir.
+ *
+ * @param viewModel Favori filmleri yöneten ViewModel.
+ * @param navController Navigasyon işlemlerini yöneten kontrolör.
+ */
 @Composable
 fun FavoritesScreen(
     viewModel: FavoritesViewModel,
@@ -60,7 +67,6 @@ fun FavoritesScreen(
                     modifier = Modifier.padding(16.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    // Film görseli
                     AsyncImage(
                         model = "${Constants.BASE_URL}${Constants.IMAGE_PATH}${favoriteMovie.image}",
                         contentDescription = favoriteMovie.name,
@@ -69,10 +75,7 @@ fun FavoritesScreen(
                             .clip(RoundedCornerShape(8.dp))
                     )
                     Spacer(modifier = Modifier.width(16.dp))
-                    // Film bilgileri
-                    Column(
-                        modifier = Modifier.weight(1f)
-                    ) {
+                    Column(modifier = Modifier.weight(1f)) {
                         Text(
                             text = favoriteMovie.name,
                             style = MaterialTheme.typography.titleMedium
@@ -88,7 +91,6 @@ fun FavoritesScreen(
                         )
                     }
                     Spacer(modifier = Modifier.width(8.dp))
-                    // Favoriden çıkarma butonu
                     Button(
                         onClick = { viewModel.removeFavorite(favoriteMovie) }
                     ) {

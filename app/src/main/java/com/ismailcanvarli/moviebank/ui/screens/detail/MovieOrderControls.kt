@@ -17,13 +17,22 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.ismailcanvarli.moviebank.R
 
+/**
+ * Film sipariş miktarını artırma ve azaltma kontrollerini sağlayan bileşen.
+ *
+ * @param orderAmount Sipariş edilen film adedi.
+ * @param onDecrease Sipariş miktarını azaltma işlemini tetikleyen callback.
+ * @param onIncrease Sipariş miktarını artırma işlemini tetikleyen callback.
+ */
 @Composable
 fun MovieOrderControls(orderAmount: Int, onDecrease: () -> Unit, onIncrease: () -> Unit) {
     Row(
-        verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Center
     ) {
         IconButton(
-            onClick = onDecrease, modifier = Modifier.size(48.dp)
+            onClick = onDecrease,
+            modifier = Modifier.size(48.dp)
         ) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_decrease),
@@ -36,7 +45,8 @@ fun MovieOrderControls(orderAmount: Int, onDecrease: () -> Unit, onIncrease: () 
             style = MaterialTheme.typography.titleMedium
         )
         IconButton(
-            onClick = onIncrease, modifier = Modifier.size(48.dp)
+            onClick = onIncrease,
+            modifier = Modifier.size(48.dp)
         ) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_increase),

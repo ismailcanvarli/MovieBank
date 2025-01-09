@@ -1,5 +1,3 @@
-//Created by canVarli on 1/7/2025
-
 package com.ismailcanvarli.moviebank.di
 
 import android.content.Context
@@ -15,11 +13,18 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
+/**
+ * Room veritabanı ile ilgili bağımlılıkları sağlayan Hilt modülü.
+ */
 @Module
 @InstallIn(SingletonComponent::class)
 class RoomDBModule {
 
-    // Room DB
+    /**
+     * Room veritabanı örneğini oluşturur ve sağlar.
+     * @param context Uygulama bağlamı.
+     * @return AppDatabase nesnesi.
+     */
     @Provides
     @Singleton
     fun provideRoomDB(@ApplicationContext context: Context): AppDatabase {
@@ -30,14 +35,22 @@ class RoomDBModule {
         ).build()
     }
 
-    // Filmler için Dao
+    /**
+     * Filmlerle ilgili veritabanı işlemleri için DAO'yu sağlar.
+     * @param appDatabase Room veritabanı örneği.
+     * @return MovieDao nesnesi.
+     */
     @Provides
     @Singleton
     fun provideMovieDao(appDatabase: AppDatabase): MovieDao {
         return appDatabase.movieDao()
     }
 
-    // Favoriler için Dao
+    /**
+     * Favorilerle ilgili veritabanı işlemleri için DAO'yu sağlar.
+     * @param appDatabase Room veritabanı örneği.
+     * @return FavoriteMovieDao nesnesi.
+     */
     @Provides
     @Singleton
     fun provideFavoriteMovieDao(appDatabase: AppDatabase): FavoriteMovieDao {

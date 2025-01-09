@@ -8,6 +8,15 @@ import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.ui.graphics.vector.ImageVector
 
+/**
+ * Navigasyon öğelerini tanımlar.
+ * Her bir öğe, rotası ve başlığıyla birlikte temsil edilir.
+ *
+ * @param route Rota adı.
+ * @param title Navigasyon öğesinin başlığı.
+ * @param icon İkon vektörü (null olabilir).
+ * @param showInBottomBar Alt navigasyon çubuğunda gösterilip gösterilmeyeceği.
+ */
 enum class NavigationItem(
     val route: String,
     val title: String,

@@ -13,6 +13,13 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/**
+ * Film detay ekranını yöneten ViewModel.
+ * Favorilere ekleme ve sepete film ekleme işlemlerini yönetir.
+ *
+ * @property favoritesRepository Favorilerle ilgili işlemleri yöneten repository.
+ * @property movieRepository Film ve sepet işlemleri için kullanılan repository.
+ */
 @HiltViewModel
 class MovieDetailViewModel @Inject constructor(
     private val favoritesRepository: FavoritesRepository,
@@ -20,14 +27,26 @@ class MovieDetailViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val _isFavorite = MutableStateFlow(false)
+
     private val _addToCartMessage = MutableStateFlow<String?>(null)
 
+    /**
+     * Filmin favorilerde olup olmadığını kontrol eder.
+     *
+     * @param movieId Kontrol edilecek film ID'si.
+     */
     fun checkIfFavorite(movieId: Int) {
         viewModelScope.launch {
             _isFavorite.value = favoritesRepository.isMovieFavorite(movieId)
         }
     }
 
+    /**
+     * Filmi favorilere ekler.
+     * Eğer film zaten favorilerdeyse işlem yapılmaz.
+     *
+     * @param movie Favorilere eklenecek film bilgisi.
+     */
     fun addFavorite(movie: FavoriteMovieEntity) {
         viewModelScope.launch {
             val isAlreadyFavorite = favoritesRepository.isMovieFavorite(movie.movieId)
@@ -38,6 +57,13 @@ class MovieDetailViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Filmi sepete ekler.
+     *
+     * @param movie Sepete eklenecek film bilgisi.
+     * @param userName Kullanıcının adı.
+     * @param orderAmount Sipariş edilen miktar.
+     */
     fun addMovieToCart(movie: Movie, userName: String, orderAmount: Int) {
         viewModelScope.launch {
             val response = movieRepository.addMovieToCart(movie, orderAmount, userName)

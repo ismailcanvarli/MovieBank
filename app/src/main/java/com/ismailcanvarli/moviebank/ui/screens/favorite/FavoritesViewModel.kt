@@ -13,6 +13,12 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/**
+ * Favoriler ekranını yöneten ViewModel.
+ * Kullanıcının favori filmlerini getirir ve favorilerden çıkarma işlemini yönetir.
+ *
+ * @property favoritesRepository Favori filmlerle ilgili işlemleri yöneten repository.
+ */
 @HiltViewModel
 class FavoritesViewModel @Inject constructor(
     private val favoritesRepository: FavoritesRepository
@@ -23,7 +29,11 @@ class FavoritesViewModel @Inject constructor(
             viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList()
         )
 
-    // Favorilerden çıkarma işlemi
+    /**
+     * Belirli bir filmi favorilerden çıkarır.
+     *
+     * @param movie Favorilerden çıkarılacak film.
+     */
     fun removeFavorite(movie: FavoriteMovieEntity) {
         viewModelScope.launch {
             favoritesRepository.deleteFavoriteMovie(movie)

@@ -21,6 +21,12 @@ import coil.compose.AsyncImage
 import com.ismailcanvarli.moviebank.common.Constants
 import com.ismailcanvarli.moviebank.data.model.Movie
 
+/**
+ * Film detaylarını gösteren bir kart bileşeni.
+ * Kullanıcıya görsel ve yazılı bilgi sağlar.
+ *
+ * @param movie Gösterilecek film bilgisi.
+ */
 @Composable
 fun MovieDetailCard(movie: Movie) {
     Card(

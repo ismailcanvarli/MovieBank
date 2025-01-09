@@ -28,48 +28,51 @@ import com.ismailcanvarli.moviebank.ui.screens.favorite.FavoritesViewModel
 import com.ismailcanvarli.moviebank.ui.screens.home.HomeScreen
 import com.ismailcanvarli.moviebank.ui.screens.home.HomeViewModel
 
+/**
+ * Uygulamanın navigasyon yapısını tanımlar.
+ * Farklı ekranlar arasında geçiş yapılmasını sağlar.
+ *
+ * @param homeViewModel Ana ekran için kullanılan ViewModel.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AppNavGraph(homeViewModel: HomeViewModel) {
     val navController = rememberNavController()
 
-    Scaffold(topBar = {
-        TopBar(navController = navController)
-    }, bottomBar = {
-        if (navController.currentBackStackEntryAsState().value?.destination?.route in NavigationItem.entries.filter { it.showInBottomBar }
-                .map { it.route }) {
-            BottomBar(navController = navController)
+    Scaffold(
+        topBar = { TopBar(navController = navController) },
+        bottomBar = {
+            if (navController.currentBackStackEntryAsState().value?.destination?.route in
+                NavigationItem.entries.filter { it.showInBottomBar }.map { it.route }) {
+                BottomBar(navController = navController)
+            }
         }
-    }) { innerPadding ->
+    ) { innerPadding ->
         NavHost(
             navController = navController,
             startDestination = NavigationItem.Home.route,
             modifier = Modifier.padding(innerPadding)
         ) {
-            // Home Screen
             composable(NavigationItem.Home.route) {
                 HomeScreen(navController = navController, viewModel = homeViewModel)
             }
-            // Favorites Screen
             composable(NavigationItem.Favorites.route) {
                 val favoritesViewModel: FavoritesViewModel = hiltViewModel()
                 FavoritesScreen(navController = navController, viewModel = favoritesViewModel)
             }
-            // Cart Screen
             composable(NavigationItem.Cart.route) {
                 val movieCartViewModel: MovieCartViewModel = hiltViewModel()
                 MovieCartScreen(viewModel = movieCartViewModel)
             }
-            // Movie Detail Screen
             composable(
                 NavigationItem.Details.route,
                 arguments = listOf(navArgument("movieId") { type = NavType.IntType })
             ) { backStackEntry ->
                 val movieId = backStackEntry.arguments?.getInt("movieId")
-                val movieList by homeViewModel.movieList.collectAsState() // collectAsState kullanımı
+                val movieList by homeViewModel.movieList.collectAsState()
                 val movieDetailViewModel: MovieDetailViewModel = hiltViewModel()
 
-                val selectedMovie = movieList.find { it.id == movieId } // movieId ile filmi bulma
+                val selectedMovie = movieList.find { it.id == movieId }
 
                 selectedMovie?.let {
                     MovieDetailScreen(movie = it, viewModel = movieDetailViewModel)

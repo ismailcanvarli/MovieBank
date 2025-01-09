@@ -2,6 +2,11 @@
 
 package com.ismailcanvarli.moviebank.data.model
 
+/**
+ * Tüm filmleri içeren API yanıt modeli.
+ *
+ * @property movies Filmler listesini içerir.
+ */
 data class MovieResponse(
     val movies: List<Movie>
 )

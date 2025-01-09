@@ -19,6 +19,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
+/**
+ * Kullanıcının indirim kodu girmesini ve uygulamasını sağlayan bileşen.
+ * @param onApplyDiscount Girilen indirim kodunu işleyen callback.
+ */
 @Composable
 fun DiscountCodeSection(onApplyDiscount: (String) -> Unit) {
     var discountCode by remember { mutableStateOf("") }

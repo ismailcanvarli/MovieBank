@@ -25,6 +25,15 @@ import com.ismailcanvarli.moviebank.R
 import com.ismailcanvarli.moviebank.common.Constants
 import com.ismailcanvarli.moviebank.data.model.MovieCart
 
+/**
+ * Kullanıcının sepetindeki bir film öğesini temsil eden bileşen.
+ * Kullanıcı, sipariş miktarını artırabilir, azaltabilir veya tamamen kaldırabilir.
+ *
+ * @param movie Gösterilecek film bilgisi.
+ * @param onIncrement Sipariş miktarını artırma işlemini tetikleyen callback.
+ * @param onDecrement Sipariş miktarını azaltma işlemini tetikleyen callback.
+ * @param onRemove Film öğesini tamamen kaldırma işlemini tetikleyen callback.
+ */
 @Composable
 fun MovieCartItem(
     movie: MovieCart, onIncrement: () -> Unit, onDecrement: () -> Unit, onRemove: () -> Unit
@@ -47,7 +56,6 @@ fun MovieCartItem(
             Text(text = "Amount: ${movie.orderAmount}", style = MaterialTheme.typography.bodySmall)
         }
         Row(verticalAlignment = Alignment.CenterVertically) {
-            // Azaltma butonu
             IconButton(
                 onClick = onDecrement, enabled = movie.orderAmount > 1
             ) {
@@ -61,7 +69,6 @@ fun MovieCartItem(
                 style = MaterialTheme.typography.bodyMedium,
                 modifier = Modifier.padding(horizontal = 8.dp)
             )
-            // Arttırma butonu
             IconButton(onClick = onIncrement) {
                 Icon(
                     painter = painterResource(id = R.drawable.ic_increase),
@@ -69,7 +76,6 @@ fun MovieCartItem(
                 )
             }
             Spacer(modifier = Modifier.width(8.dp))
-            // Silme butonu
             IconButton(onClick = onRemove) {
                 Icon(
                     imageVector = Icons.Default.Delete, contentDescription = "Remove all instances"
