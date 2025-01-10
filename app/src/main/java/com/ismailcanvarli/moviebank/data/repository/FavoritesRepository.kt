@@ -45,4 +45,12 @@ class FavoritesRepository @Inject constructor(
     suspend fun deleteFavoriteMovie(movie: FavoriteMovieEntity) {
         favoriteMovieDao.deleteFavoriteMovie(movie)
     }
+
+    /**
+     * Favorilerden bir filmi siler.
+     * @param movieId Silinecek film ID'si.
+     */
+    suspend fun deleteFavoriteMovieById(movieId: Int) {
+        favoriteMovieDao.deleteFavoriteMovieById(movieId)
+    }
 }

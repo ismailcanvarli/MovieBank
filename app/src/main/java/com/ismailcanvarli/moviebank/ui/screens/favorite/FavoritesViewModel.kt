@@ -7,9 +7,8 @@ import androidx.lifecycle.viewModelScope
 import com.ismailcanvarli.moviebank.data.repository.FavoritesRepository
 import com.ismailcanvarli.moviebank.data.room.FavoriteMovieEntity
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -24,19 +23,33 @@ class FavoritesViewModel @Inject constructor(
     private val favoritesRepository: FavoritesRepository
 ) : ViewModel() {
 
-    val favoriteMovies: StateFlow<List<FavoriteMovieEntity>> =
-        favoritesRepository.getFavoriteMovies().stateIn(
-            viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList()
-        )
+    private val _favoriteMovies = MutableStateFlow<List<FavoriteMovieEntity>>(emptyList())
+    val favoriteMovies: StateFlow<List<FavoriteMovieEntity>> = _favoriteMovies
+
+    init {
+        fetchFavoriteMovies()
+    }
 
     /**
-     * Belirli bir filmi favorilerden çıkarır.
+     * Favori filmleri yeniden yükler.
+     */
+    private fun fetchFavoriteMovies() {
+        viewModelScope.launch {
+            favoritesRepository.getFavoriteMovies().collect { movies ->
+                _favoriteMovies.value = movies
+            }
+        }
+    }
+
+    /**
+     * Belirli bir filmi favorilerden çıkarır ve listeyi yeniler.
      *
      * @param movie Favorilerden çıkarılacak film.
      */
     fun removeFavorite(movie: FavoriteMovieEntity) {
         viewModelScope.launch {
             favoritesRepository.deleteFavoriteMovie(movie)
+            fetchFavoriteMovies()
         }
     }
 }

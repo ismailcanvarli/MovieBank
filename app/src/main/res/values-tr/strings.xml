@@ -2,10 +2,11 @@
 <resources>
     <string name="app_name">Movie Bank</string>
     <string name="add_to_cart">Sepete %1$d ekle</string>
+    <string name="add_to_cart_button">Sepete ekle</string>
     <string name="add_to_favorites">Favorilere Ekle</string>
     <string name="apply_button">Uygula</string>
     <string name="back_button_description">Geri</string>
-    <string name="cart_empty_message">Sepetiniz boş.</string>
+    <string name="cart_empty_message">Sepetiniz boş</string>
     <string name="cart_title">Sepet</string>
     <string name="confirm_cart">Sepeti Onayla</string>
     <string name="decrease_order_amount">Sipariş miktarını azalt</string>
@@ -27,6 +28,7 @@
     <string name="rating_label">Puan: %1$.1f</string>
     <string name="remove_all_instances">Tüm öğeleri kaldır</string>
     <string name="remove_button">Kaldır</string>
+    <string name="remove_from_favorites">Favorilerden kaldır</string>
     <string name="total_price">Toplam Tutar: $%1$.2f</string>
     <string name="year_label">Yıl: %1$d</string>
     <string name="discount_applied_message">İndirim başarıyla uygulandı: </string>

@@ -38,6 +38,13 @@ interface FavoriteMovieDao {
     suspend fun deleteFavoriteMovie(movie: FavoriteMovieEntity)
 
     /**
+     * Belirtilen ID'ye sahip bir filmi favorilerden siler.
+     * @param movieId Silinecek film ID'si.
+     */
+    @Query("DELETE FROM ${Constants.MOVIE_FAVORITE_TABLE} WHERE movieId = :movieId")
+    suspend fun deleteFavoriteMovieById(movieId: Int)
+
+    /**
      * Belirtilen ID'ye sahip bir filmin favori olup olmadığını kontrol eder.
      * @param movieId Kontrol edilecek film ID'si.
      * @return Film favoriyse true, değilse false döner.
