@@ -37,6 +37,7 @@ import com.ismailcanvarli.moviebank.R
  *
  * @param movie Gösterilecek film bilgisi.
  * @param viewModel Detay ekranını yöneten ViewModel.
+ * @param navController Navigation kontrolcüsü.
  * @param userName Kullanıcının adı (varsayılan değer Constants.USER_NAME).
  */
 @Composable
@@ -116,6 +117,7 @@ fun MovieDetailScreen(
             onAddToCart = {
                 viewModel.addMovieToCart(movie, userName, orderAmount)
             },
+            navController = navController,
             modifier = Modifier
                 .align(Alignment.BottomCenter)
                 .padding(16.dp)
