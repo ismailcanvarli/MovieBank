@@ -8,6 +8,7 @@
     <string name="cart_empty_message">Your cart is empty</string>
     <string name="cart_title">Cart</string>
     <string name="confirm_cart">Confirm Cart</string>
+    <string name="category_label">Category: %1$s</string>
     <string name="decrease_order_amount">Decrease order amount</string>
     <string name="details_title">Details</string>
     <string name="director_label">Director: %1$s</string>

@@ -29,17 +29,14 @@ import com.ismailcanvarli.moviebank.data.model.Movie
  */
 @Composable
 fun MovieCard(movie: Movie, onClick: () -> Unit, actionButton: @Composable (() -> Unit)? = null) {
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable { onClick() }
-            .padding(8.dp),
+    Card(modifier = Modifier
+        .fillMaxWidth()
+        .clickable { onClick() }
+        .padding(8.dp),
         elevation = CardDefaults.cardElevation(4.dp),
-        shape = RoundedCornerShape(12.dp)
-    ) {
+        shape = RoundedCornerShape(12.dp)) {
         Row(
-            modifier = Modifier.padding(16.dp),
-            verticalAlignment = Alignment.CenterVertically
+            modifier = Modifier.padding(16.dp), verticalAlignment = Alignment.CenterVertically
         ) {
             AsyncImage(
                 model = "${Constants.BASE_URL}${Constants.IMAGE_PATH}${movie.image}",
@@ -51,14 +48,15 @@ fun MovieCard(movie: Movie, onClick: () -> Unit, actionButton: @Composable (() -
             Spacer(modifier = Modifier.width(16.dp))
             Column {
                 Text(
-                    text = stringResource(R.string.movie_title, movie.name),
-                    style = MaterialTheme.typography.titleMedium
+                    text = movie.name,
+                    style = MaterialTheme.typography.titleMedium,
+                    modifier = Modifier.align(Alignment.CenterHorizontally)
                 )
                 Text(
                     text = stringResource(R.string.movie_director, movie.director),
                     style = MaterialTheme.typography.bodySmall
                 )
-                actionButton?.let { it() } // Action Button'u çağırma
+                actionButton?.let { it() }
             }
         }
     }

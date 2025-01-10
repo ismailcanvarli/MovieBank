@@ -9,6 +9,7 @@
     <string name="cart_empty_message">Sepetiniz boş</string>
     <string name="cart_title">Sepet</string>
     <string name="confirm_cart">Sepeti Onayla</string>
+    <string name="category_label">Kategori: %1$s</string>
     <string name="decrease_order_amount">Sipariş miktarını azalt</string>
     <string name="details_title">Detaylar</string>
     <string name="director_label">Yönetmen: %1$s</string>
@@ -22,7 +23,7 @@
     <string name="movie_title">Başlık: %1$s</string>
     <string name="movie_director">Yönetmen: %1$s</string>
     <string name="movie_year">Yıl: %1$d</string>
-    <string name="movie_price">Fiyat: %1$d₺</string>
+    <string name="movie_price">Fiyat: %1$d$</string>
     <string name="movie_name">Adı: %1$s</string>
     <string name="movie_amount">Adet: %1$d</string>
     <string name="rating_label">Puan: %1$.1f</string>
