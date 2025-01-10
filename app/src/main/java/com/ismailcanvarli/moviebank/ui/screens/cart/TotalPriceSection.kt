@@ -3,6 +3,7 @@
 package com.ismailcanvarli.moviebank.ui.screens.cart
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -43,10 +44,16 @@ fun TotalPriceSection(
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Text(
-            text = stringResource(R.string.total_price, discountedPrice),
-            style = MaterialTheme.typography.titleMedium
-        )
+        Column {
+            Text(
+                text = stringResource(R.string.total_price_title),
+                style = MaterialTheme.typography.bodySmall
+            )
+            Text(
+                text = "$discountedPrice $",
+                style = MaterialTheme.typography.titleMedium
+            )
+        }
         Button(onClick = onConfirmCart, enabled = isEnabled) {
             Text(stringResource(R.string.confirm_cart))
         }
