@@ -42,4 +42,6 @@
     <string name="sort_rating_low">Puan (Düşükten Yükseğe)</string>
     <string name="sort_price_low">Fiyat (Düşükten Yükseğe)</string>
     <string name="sort_price_high">Fiyat (Yüksekten Düşüğe)</string>
+    <string name="order_amount_label">Sipariş adeti: %1$d</string>
+
 </resources>

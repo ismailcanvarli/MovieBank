@@ -41,4 +41,5 @@
     <string name="sort_rating_low">Rating (Low to High)</string>
     <string name="sort_price_low">Price (Low to High)</string>
     <string name="sort_price_high">Price (High to Low)</string>
+    <string name="order_amount_label">Order Amount: %1$d</string>
 </resources>

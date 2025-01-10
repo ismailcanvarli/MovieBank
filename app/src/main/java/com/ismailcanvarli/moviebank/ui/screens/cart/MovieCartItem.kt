@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -40,10 +41,7 @@ import com.ismailcanvarli.moviebank.data.model.MovieCart
  */
 @Composable
 fun MovieCartItem(
-    movie: MovieCart,
-    onIncrement: () -> Unit,
-    onDecrement: () -> Unit,
-    onRemove: () -> Unit
+    movie: MovieCart, onIncrement: () -> Unit, onDecrement: () -> Unit, onRemove: () -> Unit
 ) {
     Box(
         modifier = Modifier
@@ -55,59 +53,111 @@ fun MovieCartItem(
             elevation = CardDefaults.cardElevation(4.dp),
             shape = RoundedCornerShape(12.dp)
         ) {
-            Row(
+            Column(
                 modifier = Modifier.padding(16.dp),
-                verticalAlignment = Alignment.CenterVertically
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                AsyncImage(
-                    model = "${Constants.BASE_URL}${Constants.IMAGE_PATH}${movie.image}",
-                    contentDescription = movie.name,
-                    modifier = Modifier
-                        .size(100.dp)
-                        .clip(RoundedCornerShape(8.dp))
-                )
-
-                Spacer(modifier = Modifier.width(16.dp))
-
-                Column(
-                    modifier = Modifier.weight(1f),
-                    horizontalAlignment = Alignment.Start
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text(
-                        text = movie.name,
-                        style = MaterialTheme.typography.titleMedium,
-                        modifier = Modifier.padding(bottom = 8.dp)
+                    AsyncImage(
+                        model = "${Constants.BASE_URL}${Constants.IMAGE_PATH}${movie.image}",
+                        contentDescription = movie.name,
+                        modifier = Modifier
+                            .size(100.dp)
+                            .clip(RoundedCornerShape(8.dp))
                     )
-                    Text(
-                        text = stringResource(R.string.movie_price, movie.price),
-                        style = MaterialTheme.typography.bodySmall
-                    )
-                    Text(
-                        text = stringResource(R.string.movie_amount, movie.orderAmount),
-                        style = MaterialTheme.typography.bodySmall
-                    )
+
+                    Spacer(modifier = Modifier.width(16.dp))
+
+                    Column(
+                        modifier = Modifier.weight(1f), horizontalAlignment = Alignment.Start
+                    ) {
+                        // Film Adı
+                        Text(
+                            text = movie.name,
+                            style = MaterialTheme.typography.titleMedium,
+                            modifier = Modifier.padding(bottom = 8.dp)
+                        )
+                        Spacer(modifier = Modifier.height(4.dp))
+
+                        // Yönetmen
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Icon(
+                                painter = painterResource(id = R.drawable.ic_director),
+                                contentDescription = stringResource(R.string.director_label),
+                                modifier = Modifier.size(16.dp),
+                                tint = MaterialTheme.colorScheme.primary
+                            )
+                            Spacer(modifier = Modifier.width(4.dp))
+                            Text(
+                                text = movie.director, style = MaterialTheme.typography.bodySmall
+                            )
+                        }
+                        Spacer(modifier = Modifier.height(4.dp))
+
+                        // Fiyat
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Icon(
+                                painter = painterResource(id = R.drawable.ic_attach_money),
+                                contentDescription = stringResource(R.string.movie_price),
+                                modifier = Modifier.size(16.dp),
+                                tint = MaterialTheme.colorScheme.primary
+                            )
+                            Spacer(modifier = Modifier.width(4.dp))
+                            Text(
+                                text = "${movie.price} $",
+                                style = MaterialTheme.typography.bodySmall
+                            )
+                        }
+                        Spacer(modifier = Modifier.height(4.dp))
+
+                        // Rating
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Icon(
+                                painter = painterResource(id = R.drawable.ic_rating_star),
+                                contentDescription = stringResource(R.string.rating_label),
+                                modifier = Modifier.size(16.dp),
+                                tint = MaterialTheme.colorScheme.primary
+                            )
+                            Spacer(modifier = Modifier.width(4.dp))
+                            Text(
+                                text = "${movie.rating}", style = MaterialTheme.typography.bodySmall
+                            )
+                        }
+                    }
+
+                    Column(horizontalAlignment = Alignment.End) {
+                        IconButton(onClick = onIncrement) {
+                            Icon(
+                                painter = painterResource(id = R.drawable.ic_increase),
+                                contentDescription = stringResource(R.string.increase_order_amount)
+                            )
+                        }
+                        IconButton(onClick = onDecrement, enabled = movie.orderAmount > 1) {
+                            Icon(
+                                painter = painterResource(id = R.drawable.ic_decrease),
+                                contentDescription = stringResource(R.string.decrease_order_amount)
+                            )
+                        }
+                        IconButton(onClick = onRemove) {
+                            Icon(
+                                painter = painterResource(id = R.drawable.ic_delete),
+                                contentDescription = stringResource(R.string.remove_all_instances)
+                            )
+                        }
+                    }
                 }
 
-                Column(horizontalAlignment = Alignment.End) {
-                    IconButton(onClick = onIncrement) {
-                        Icon(
-                            painter = painterResource(id = R.drawable.ic_increase),
-                            contentDescription = stringResource(R.string.increase_order_amount)
-                        )
-                    }
-                    IconButton(onClick = onDecrement, enabled = movie.orderAmount > 1) {
-                        Icon(
-                            painter = painterResource(id = R.drawable.ic_decrease),
-                            contentDescription = stringResource(R.string.decrease_order_amount)
-                        )
-                    }
-                    IconButton(onClick = onRemove) {
-                        Icon(
-                            painter = painterResource(id = R.drawable.ic_delete),
-                            contentDescription = stringResource(R.string.remove_all_instances)
-                        )
-                    }
-                }
+                Spacer(modifier = Modifier.height(16.dp))
+
+                // Sipariş Adedi Kartın En Altında
+                Text(
+                    text = stringResource(R.string.order_amount_label, movie.orderAmount),
+                    style = MaterialTheme.typography.titleLarge,
+                    modifier = Modifier.align(Alignment.CenterHorizontally)
+                )
             }
         }
     }
