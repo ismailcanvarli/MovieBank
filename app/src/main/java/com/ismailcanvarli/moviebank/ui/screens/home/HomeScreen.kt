@@ -29,15 +29,41 @@ fun HomeScreen(navController: NavController, viewModel: HomeViewModel) {
     val movieList by viewModel.movieList.collectAsState()
     val searchQuery by viewModel.searchQuery.collectAsState()
     val errorMessage by viewModel.errorMessage.collectAsState()
+    val sortOptions = mapOf(
+        "NAME_ASC" to stringResource(R.string.sort_name_asc),
+        "NAME_DESC" to stringResource(R.string.sort_name_desc),
+        "RATING_HIGH" to stringResource(R.string.sort_rating_high),
+        "RATING_LOW" to stringResource(R.string.sort_rating_low),
+        "PRICE_LOW" to stringResource(R.string.sort_price_low),
+        "PRICE_HIGH" to stringResource(R.string.sort_price_high)
+    )
+    var selectedSortKey by remember { mutableStateOf("NAME_ASC") }
 
     Column {
-        TextField(value = searchQuery,
-            onValueChange = { viewModel.updateSearchQuery(it) },
-            placeholder = { Text(text = stringResource(R.string.search_placeholder)) },
+        Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(8.dp)
-        )
+                .padding(8.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            TextField(value = searchQuery,
+                onValueChange = { viewModel.updateSearchQuery(it) },
+                placeholder = { Text(text = stringResource(R.string.search_placeholder)) },
+                modifier = Modifier.weight(1f)
+            )
+
+            Spacer(modifier = Modifier.width(8.dp))
+
+            DropdownMenuWithSelection(options = sortOptions.values.toList(),
+                selectedOption = sortOptions[selectedSortKey] ?: "",
+                onOptionSelected = { selectedText ->
+                    selectedSortKey =
+                        sortOptions.entries.firstOrNull { it.value == selectedText }?.key
+                            ?: "NAME_ASC"
+                    viewModel.updateSortOption(selectedSortKey)
+                })
+        }
 
         if (errorMessage != null) {
             Box(

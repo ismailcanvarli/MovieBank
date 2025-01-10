@@ -60,6 +60,9 @@ class HomeViewModel @Inject constructor(
         applyFilters()
     }
 
+    /**
+     * Arama sorgusuna göre filmleri filtreler.
+     */
     private fun applyFilters() {
         val query = _searchQuery.value.lowercase()
         _movieList.value = if (query.isEmpty()) {
@@ -68,6 +71,21 @@ class HomeViewModel @Inject constructor(
             allMovies.filter {
                 it.name.lowercase().contains(query) || it.director.lowercase().contains(query)
             }
+        }
+    }
+
+    /**
+     * Sıralama seçeneğine göre filmleri sıralar.
+     */
+    fun updateSortOption(optionKey: String) {
+        _movieList.value = when (optionKey) {
+            "NAME_ASC" -> _movieList.value.sortedBy { it.name }
+            "NAME_DESC" -> _movieList.value.sortedByDescending { it.name }
+            "RATING_HIGH" -> _movieList.value.sortedByDescending { it.rating }
+            "RATING_LOW" -> _movieList.value.sortedBy { it.rating }
+            "PRICE_LOW" -> _movieList.value.sortedBy { it.price }
+            "PRICE_HIGH" -> _movieList.value.sortedByDescending { it.price }
+            else -> _movieList.value
         }
     }
 }

@@ -29,9 +29,16 @@
     <string name="remove_all_instances">Remove all instances</string>
     <string name="remove_button">Remove</string>
     <string name="remove_from_favorites">Remove from favorites</string>
+    <string name="sort_options">Sort options</string>
     <string name="year_label">Year: %1$d</string>
     <string name="total_price_title">Total Price</string>
     <string name="discount_applied_message">Discount applied: </string>
     <string name="invalid_discount_message">Invalid discount code</string>
     <string name="search_placeholder">Search by name</string>
+    <string name="sort_name_asc">Name (A-Z)</string>
+    <string name="sort_name_desc">Name (Z-A)</string>
+    <string name="sort_rating_high">Rating (High to Low)</string>
+    <string name="sort_rating_low">Rating (Low to High)</string>
+    <string name="sort_price_low">Price (Low to High)</string>
+    <string name="sort_price_high">Price (High to Low)</string>
 </resources>

@@ -30,9 +30,16 @@
     <string name="remove_all_instances">Tüm öğeleri kaldır</string>
     <string name="remove_button">Kaldır</string>
     <string name="remove_from_favorites">Favorilerden kaldır</string>
+    <string name="sort_options">Sıralama seçenekleri</string>
     <string name="total_price_title">Toplam Tutar</string>
     <string name="year_label">Yıl: %1$d</string>
     <string name="discount_applied_message">İndirim başarıyla uygulandı: </string>
     <string name="invalid_discount_message">Geçersiz indirim kodu</string>
     <string name="search_placeholder">İsme göre ara</string>
+    <string name="sort_name_asc">Ad (A-Z)</string>
+    <string name="sort_name_desc">Ad (Z-A)</string>
+    <string name="sort_rating_high">Puan (Yüksekten Düşüğe)</string>
+    <string name="sort_rating_low">Puan (Düşükten Yükseğe)</string>
+    <string name="sort_price_low">Fiyat (Düşükten Yükseğe)</string>
+    <string name="sort_price_high">Fiyat (Yüksekten Düşüğe)</string>
 </resources>
