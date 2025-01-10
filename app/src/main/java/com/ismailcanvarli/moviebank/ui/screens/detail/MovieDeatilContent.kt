@@ -47,7 +47,7 @@ fun MovieDetailContent(
                     .fillMaxWidth()
                     .height(600.dp)
             )
-            // todo burayı daha gelirgin hale getir.
+
             AddToFavoriteButton(
                 isFavorite = isFavorite, onToggleFavorite = {
                     onToggleFavorite(
@@ -82,9 +82,11 @@ fun MovieDetailContent(
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        Column(modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp)) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp)
+        ) {
             Text(
                 text = stringResource(R.string.category_label, movie.category),
                 style = MaterialTheme.typography.bodyMedium

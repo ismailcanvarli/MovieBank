@@ -2,11 +2,15 @@
 
 package com.ismailcanvarli.moviebank.ui.screens.detail
 
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -17,6 +21,7 @@ import com.ismailcanvarli.moviebank.R
  *
  * @param isFavorite Film favorilere ekli mi?
  * @param onToggleFavorite Favori durumunu değiştiren fonksiyon.
+ * @param modifier Bileşenin modifikatörü.
  */
 @Composable
 fun AddToFavoriteButton(
@@ -24,19 +29,33 @@ fun AddToFavoriteButton(
     onToggleFavorite: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    IconButton(
-        onClick = onToggleFavorite,
-        modifier = modifier.size(48.dp)
+    Box(
+        modifier = modifier
+            .size(64.dp)
+            .padding(8.dp)
     ) {
-        Icon(
-            painter = painterResource(
-                id = if (isFavorite) R.drawable.ic_favorite_filled else R.drawable.ic_favorite_empty
-            ),
-            contentDescription = if (isFavorite) {
-                stringResource(R.string.remove_from_favorites)
-            } else {
-                stringResource(R.string.add_to_favorites)
-            }
-        )
+        androidx.compose.foundation.Canvas(
+            modifier = Modifier.matchParentSize()
+        ) {
+            drawCircle(
+                color = Color(0xFFE0E0E0), radius = size.minDimension / 2
+            )
+        }
+
+        IconButton(
+            onClick = onToggleFavorite, modifier = Modifier
+                .size(48.dp)
+                .align(Alignment.Center)
+        ) {
+            Icon(
+                painter = painterResource(
+                    id = if (isFavorite) R.drawable.ic_favorite_filled else R.drawable.ic_favorite_empty
+                ), contentDescription = if (isFavorite) {
+                    stringResource(R.string.remove_from_favorites)
+                } else {
+                    stringResource(R.string.add_to_favorites)
+                }
+            )
+        }
     }
 }
