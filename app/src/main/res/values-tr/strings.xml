@@ -6,7 +6,7 @@
     <string name="add_to_favorites">Favorilere Ekle</string>
     <string name="apply_button">Uygula</string>
     <string name="back_button_description">Geri</string>
-    <string name="cart_empty_message">Sepetiniz boş</string>
+    <string name="cart_empty_message">Sepetinizde ürün bulunmamaktadır</string>
     <string name="cart_title">Sepet</string>
     <string name="confirm_cart">Sepeti Onayla</string>
     <string name="category_label">Kategori: %1$s</string>
@@ -43,5 +43,5 @@
     <string name="sort_price_low">Fiyat (Düşükten Yükseğe)</string>
     <string name="sort_price_high">Fiyat (Yüksekten Düşüğe)</string>
     <string name="order_amount_label">Sipariş adeti: %1$d</string>
-
+    <string name="favorites_empty_message">Favori filminiz bulunmamaktadır.</string>
 </resources>

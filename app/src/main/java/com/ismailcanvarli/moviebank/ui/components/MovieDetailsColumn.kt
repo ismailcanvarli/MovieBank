@@ -29,15 +29,13 @@ fun MovieDetailsColumn(
     Column(
         modifier = modifier, horizontalAlignment = Alignment.Start
     ) {
-        // Film Adı
         Text(
             text = movie.name,
-            style = MaterialTheme.typography.titleMedium,
+            style = MaterialTheme.typography.titleLarge,
             modifier = Modifier.padding(bottom = 8.dp)
         )
         Spacer(modifier = Modifier.height(4.dp))
 
-        // Yönetmen
         Row(verticalAlignment = Alignment.CenterVertically) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_director),
@@ -47,12 +45,11 @@ fun MovieDetailsColumn(
             )
             Spacer(modifier = Modifier.width(4.dp))
             Text(
-                text = movie.director, style = MaterialTheme.typography.bodySmall
+                text = movie.director, style = MaterialTheme.typography.bodyMedium
             )
         }
         Spacer(modifier = Modifier.height(4.dp))
 
-        // Fiyat
         Row(verticalAlignment = Alignment.CenterVertically) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_attach_money),
@@ -62,12 +59,11 @@ fun MovieDetailsColumn(
             )
             Spacer(modifier = Modifier.width(4.dp))
             Text(
-                text = "${movie.price} $", style = MaterialTheme.typography.bodySmall
+                text = "${movie.price} $", style = MaterialTheme.typography.bodyMedium
             )
         }
         Spacer(modifier = Modifier.height(4.dp))
 
-        // Rating
         Row(verticalAlignment = Alignment.CenterVertically) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_rating_star),
@@ -77,7 +73,7 @@ fun MovieDetailsColumn(
             )
             Spacer(modifier = Modifier.width(4.dp))
             Text(
-                text = "${movie.rating}", style = MaterialTheme.typography.bodySmall
+                text = "${movie.rating}", style = MaterialTheme.typography.bodyMedium
             )
         }
     }

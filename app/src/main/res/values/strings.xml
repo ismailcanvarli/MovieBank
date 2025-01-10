@@ -42,4 +42,5 @@
     <string name="sort_price_low">Price (Low to High)</string>
     <string name="sort_price_high">Price (High to Low)</string>
     <string name="order_amount_label">Order Amount: %1$d</string>
+    <string name="favorites_empty_message">You have no favorite movies</string>
 </resources>
