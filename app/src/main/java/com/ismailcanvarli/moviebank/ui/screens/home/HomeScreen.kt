@@ -49,7 +49,8 @@ fun HomeScreen(navController: NavController, viewModel: HomeViewModel) {
         ) {
             TextField(value = searchQuery,
                 onValueChange = { viewModel.updateSearchQuery(it) },
-                placeholder = { Text(text = stringResource(R.string.search_placeholder)) },
+                placeholder = { Text(text = stringResource(R.string.search_placeholder))},
+                singleLine = true,
                 modifier = Modifier.weight(1f)
             )
 

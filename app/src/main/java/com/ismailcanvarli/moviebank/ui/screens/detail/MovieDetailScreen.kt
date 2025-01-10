@@ -22,6 +22,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -73,9 +74,9 @@ fun MovieDetailScreen(
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(80.dp) // Sabit başlık yüksekliği
+                .height(80.dp)
                 .background(
-                    color = androidx.compose.ui.graphics.Color.Black.copy(alpha = 0.5f) // Yarı saydam arka plan
+                    color = Color.Black.copy(alpha = 0.5f)
                 )
                 .align(Alignment.TopCenter)
         ) {
@@ -86,20 +87,20 @@ fun MovieDetailScreen(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 IconButton(
-                    onClick = { navController.popBackStack() }, // Geri butonu
+                    onClick = { navController.popBackStack() },
                     modifier = Modifier.padding(end = 8.dp)
                 ) {
                     Icon(
                         painter = painterResource(id = R.drawable.ic_arrow_back),
                         contentDescription = stringResource(R.string.back_button_description),
-                        tint = androidx.compose.ui.graphics.Color.White
+                        tint = Color.White
                     )
                 }
 
                 Text(
-                    text = movie.name, // Film adı başlık olarak gösteriliyor
+                    text = movie.name,
                     style = androidx.compose.material3.MaterialTheme.typography.titleLarge.copy(
-                        color = androidx.compose.ui.graphics.Color.White
+                        color = Color.White
                     ),
                     modifier = Modifier.weight(1f),
                     textAlign = androidx.compose.ui.text.style.TextAlign.Center

@@ -12,7 +12,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.ismailcanvarli.moviebank.R
 
@@ -38,23 +37,21 @@ fun AddToFavoriteButton(
             modifier = Modifier.matchParentSize()
         ) {
             drawCircle(
-                color = Color.Red, radius = size.minDimension / 2
+                color = Color.Red,
+                radius = size.minDimension / 2
             )
         }
 
         IconButton(
-            onClick = onToggleFavorite, modifier = Modifier
-                .size(48.dp)
-                .align(Alignment.Center)
+            onClick = onToggleFavorite,
+            modifier = Modifier.align(Alignment.Center)
         ) {
             Icon(
                 painter = painterResource(
                     id = if (isFavorite) R.drawable.ic_favorite_filled else R.drawable.ic_favorite_empty
-                ), contentDescription = if (isFavorite) {
-                    stringResource(R.string.remove_from_favorites)
-                } else {
-                    stringResource(R.string.add_to_favorites)
-                }
+                ),
+                contentDescription = null,
+                tint = Color.White
             )
         }
     }

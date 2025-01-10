@@ -38,7 +38,7 @@ fun MovieDetailContent(
     onToggleFavorite: (FavoriteMovieEntity) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    Column(modifier = modifier.padding(16.dp)) {
+    Column(modifier = modifier.padding(8.dp)) {
         Box {
             AsyncImage(
                 model = "${Constants.BASE_URL}${Constants.IMAGE_PATH}${movie.image}",
@@ -65,7 +65,7 @@ fun MovieDetailContent(
                     )
                 }, modifier = Modifier
                     .align(Alignment.TopEnd)
-                    .padding(16.dp)
+                    .padding(20.dp)
             )
         }
 
