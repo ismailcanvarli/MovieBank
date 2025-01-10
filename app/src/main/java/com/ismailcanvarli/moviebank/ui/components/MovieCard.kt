@@ -13,10 +13,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.ismailcanvarli.moviebank.R
 import com.ismailcanvarli.moviebank.common.Constants
 import com.ismailcanvarli.moviebank.data.model.Movie
 
@@ -26,37 +24,59 @@ import com.ismailcanvarli.moviebank.data.model.Movie
  *
  * @param movie Gösterilecek film bilgisi (Movie veya FavoriteMovieEntity türünde).
  * @param onClick Kart tıklama işlemini tetikleyen callback (isteğe bağlı).
+ * @param actionButton İşlem düğmesi bileşeni (isteğe bağlı).
  */
 @Composable
-fun MovieCard(movie: Movie, onClick: () -> Unit, actionButton: @Composable (() -> Unit)? = null) {
-    Card(modifier = Modifier
+fun MovieCard(
+    movie: Movie,
+    onClick: () -> Unit,
+    actionButton: @Composable (() -> Unit)? = null
+) {
+    Box(modifier = Modifier
         .fillMaxWidth()
-        .clickable { onClick() }
-        .padding(8.dp),
-        elevation = CardDefaults.cardElevation(4.dp),
-        shape = RoundedCornerShape(12.dp)) {
-        Row(
-            modifier = Modifier.padding(16.dp), verticalAlignment = Alignment.CenterVertically
+        .padding(8.dp)
+        .clickable { onClick() }) {
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            elevation = CardDefaults.cardElevation(4.dp),
+            shape = RoundedCornerShape(12.dp)
         ) {
-            AsyncImage(
-                model = "${Constants.BASE_URL}${Constants.IMAGE_PATH}${movie.image}",
-                contentDescription = movie.name,
+            Row(
+                modifier = Modifier.padding(16.dp), verticalAlignment = Alignment.CenterVertically
+            ) {
+                AsyncImage(
+                    model = "${Constants.BASE_URL}${Constants.IMAGE_PATH}${movie.image}",
+                    contentDescription = movie.name,
+                    modifier = Modifier
+                        .size(100.dp)
+                        .clip(RoundedCornerShape(8.dp))
+                )
+
+                Spacer(modifier = Modifier.width(16.dp))
+
+                Column(
+                    modifier = Modifier.weight(1f), horizontalAlignment = Alignment.Start
+                ) {
+                    Text(
+                        text = movie.name,
+                        style = MaterialTheme.typography.titleMedium,
+                        modifier = Modifier.padding(bottom = 8.dp)
+                    )
+                    Text(
+                        text = "Director: ${movie.director}",
+                        style = MaterialTheme.typography.bodySmall
+                    )
+                }
+            }
+        }
+
+        actionButton?.let {
+            Box(
                 modifier = Modifier
-                    .size(100.dp)
-                    .clip(RoundedCornerShape(8.dp))
-            )
-            Spacer(modifier = Modifier.width(16.dp))
-            Column {
-                Text(
-                    text = movie.name,
-                    style = MaterialTheme.typography.titleMedium,
-                    modifier = Modifier.align(Alignment.CenterHorizontally)
-                )
-                Text(
-                    text = stringResource(R.string.movie_director, movie.director),
-                    style = MaterialTheme.typography.bodySmall
-                )
-                actionButton?.let { it() }
+                    .align(Alignment.TopEnd)
+                    .padding(8.dp)
+            ) {
+                it()
             }
         }
     }

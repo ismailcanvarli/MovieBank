@@ -38,7 +38,7 @@ fun AddToFavoriteButton(
             modifier = Modifier.matchParentSize()
         ) {
             drawCircle(
-                color = Color(0xFFE0E0E0), radius = size.minDimension / 2
+                color = Color.Red, radius = size.minDimension / 2
             )
         }
 
