@@ -23,32 +23,50 @@ class HomeViewModel @Inject constructor(
     private val repository: MovieRepository
 ) : ViewModel() {
 
+    private val allMovies = mutableListOf<Movie>() // Tüm filmleri tutar
     private val _movieList = MutableStateFlow<List<Movie>>(emptyList())
     val movieList: StateFlow<List<Movie>> = _movieList
 
     private val _errorMessage = MutableStateFlow<String?>(null)
     val errorMessage: StateFlow<String?> = _errorMessage
 
+    private val _searchQuery = MutableStateFlow("")
+    val searchQuery: StateFlow<String> = _searchQuery
+
     init {
         fetchMovies()
     }
 
-    /**
-     * Tüm filmleri getirir ve listeyi günceller.
-     */
     private fun fetchMovies() {
         viewModelScope.launch {
             try {
                 repository.getAllMovies().collect { movies ->
-                    if (movies.isEmpty()) {
-                        _errorMessage.value = "No movies found."
-                    } else {
-                        _movieList.value = movies
-                        _errorMessage.value = null
-                    }
+                    allMovies.clear()
+                    allMovies.addAll(movies)
+                    _movieList.value = movies
+                    _errorMessage.value = null
                 }
             } catch (e: Exception) {
                 _errorMessage.value = "Failed to load movies."
+            }
+        }
+    }
+
+    /**
+     * Arama sorgusunu günceller ve filtre uygular.
+     */
+    fun updateSearchQuery(query: String) {
+        _searchQuery.value = query
+        applyFilters()
+    }
+
+    private fun applyFilters() {
+        val query = _searchQuery.value.lowercase()
+        _movieList.value = if (query.isEmpty()) {
+            allMovies
+        } else {
+            allMovies.filter {
+                it.name.lowercase().contains(query) || it.director.lowercase().contains(query)
             }
         }
     }

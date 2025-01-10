@@ -33,4 +33,5 @@
     <string name="total_price_title">Total Price</string>
     <string name="discount_applied_message">Discount applied: </string>
     <string name="invalid_discount_message">Invalid discount code</string>
+    <string name="search_placeholder">Search by name</string>
 </resources>

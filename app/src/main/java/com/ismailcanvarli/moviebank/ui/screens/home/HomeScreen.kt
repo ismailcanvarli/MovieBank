@@ -7,14 +7,15 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.ismailcanvarli.moviebank.ui.components.MovieCard
 import com.ismailcanvarli.moviebank.R
+import com.ismailcanvarli.moviebank.ui.components.MovieCard
 
 /**
  * Tüm filmleri listeleyen ana ekran.
@@ -26,40 +27,46 @@ import com.ismailcanvarli.moviebank.R
 @Composable
 fun HomeScreen(navController: NavController, viewModel: HomeViewModel) {
     val movieList by viewModel.movieList.collectAsState()
+    val searchQuery by viewModel.searchQuery.collectAsState()
     val errorMessage by viewModel.errorMessage.collectAsState()
 
-    if (errorMessage != null) {
-        Box(
-            modifier = Modifier.fillMaxSize(),
-            contentAlignment = Alignment.Center
-        ) {
-            Text(
-                text = errorMessage ?: "",
-                style = MaterialTheme.typography.bodyMedium
-            )
-        }
-    } else if (movieList.isEmpty()) {
-        Box(
-            modifier = Modifier.fillMaxSize(),
-            contentAlignment = Alignment.Center
-        ) {
-            Text(
-                text = stringResource(R.string.movie_not_found),
-                style = MaterialTheme.typography.bodyMedium
-            )
-        }
-    } else {
-        LazyColumn(
+    Column {
+        TextField(value = searchQuery,
+            onValueChange = { viewModel.updateSearchQuery(it) },
+            placeholder = { Text(text = stringResource(R.string.search_placeholder)) },
             modifier = Modifier
-                .fillMaxSize()
-                .padding(8.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp)
-        ) {
-            items(movieList) { movie ->
-                MovieCard(
-                    movie = movie,
-                    onClick = { navController.navigate("movieDetailScreen/${movie.id}") }
+                .fillMaxWidth()
+                .padding(8.dp)
+        )
+
+        if (errorMessage != null) {
+            Box(
+                modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    text = errorMessage ?: "", style = MaterialTheme.typography.bodyMedium
                 )
+            }
+        } else if (movieList.isEmpty()) {
+            Box(
+                modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    text = stringResource(R.string.movie_not_found),
+                    style = MaterialTheme.typography.bodyMedium
+                )
+            }
+        } else {
+            LazyColumn(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(8.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                items(movieList) { movie ->
+                    MovieCard(movie = movie,
+                        onClick = { navController.navigate("movieDetailScreen/${movie.id}") })
+                }
             }
         }
     }

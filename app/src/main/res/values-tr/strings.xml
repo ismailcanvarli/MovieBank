@@ -34,4 +34,5 @@
     <string name="year_label">Yıl: %1$d</string>
     <string name="discount_applied_message">İndirim başarıyla uygulandı: </string>
     <string name="invalid_discount_message">Geçersiz indirim kodu</string>
+    <string name="search_placeholder">İsme göre ara</string>
 </resources>
