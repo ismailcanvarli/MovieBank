@@ -64,7 +64,11 @@ fun AppNavGraph(homeViewModel: HomeViewModel) {
                 val selectedMovie = movieList.find { it.id == movieId }
 
                 selectedMovie?.let {
-                    MovieDetailScreen(movie = it, viewModel = movieDetailViewModel)
+                    MovieDetailScreen(
+                        movie = it,
+                        viewModel = movieDetailViewModel,
+                        navController = navController
+                    )
                 } ?: Text(stringResource(R.string.movie_not_found))
             }
         }

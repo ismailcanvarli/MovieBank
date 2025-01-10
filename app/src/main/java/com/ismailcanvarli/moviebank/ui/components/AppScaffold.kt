@@ -24,9 +24,6 @@ fun AppScaffold(
     content: @Composable (PaddingValues) -> Unit
 ) {
     Scaffold(
-        topBar = {
-            TopBar(navController = navController)
-        },
         bottomBar = {
             if (navController.currentBackStackEntryAsState().value?.destination?.route in
                 NavigationItem.entries.filter { it.showInBottomBar }.map { it.route }) {
