@@ -2,6 +2,7 @@
 
 package com.ismailcanvarli.moviebank.ui.components
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
@@ -19,9 +20,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
+import com.ismailcanvarli.moviebank.R
 import com.ismailcanvarli.moviebank.common.Constants
 import com.ismailcanvarli.moviebank.data.model.Movie
-import com.ismailcanvarli.moviebank.R
 
 /**
  * Film detaylarını gösteren bir kart bileşeni.
@@ -47,20 +48,37 @@ fun MovieDetailCard(movie: Movie) {
                     .aspectRatio(16f / 9f)
                     .clip(MaterialTheme.shapes.medium)
             )
+
+            Spacer(modifier = Modifier.height(12.dp))
+
+            Column(
+                modifier = Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                Text(
+                    text = movie.name, style = MaterialTheme.typography.titleMedium, maxLines = 1
+                )
+                Text(
+                    text = stringResource(R.string.director_label, movie.director),
+                    style = MaterialTheme.typography.bodyMedium
+                )
+                Text(
+                    text = stringResource(R.string.year_label, movie.year),
+                    style = MaterialTheme.typography.bodyMedium
+                )
+                Text(
+                    text = stringResource(R.string.rating_label, movie.rating),
+                    style = MaterialTheme.typography.bodyMedium
+                )
+            }
+
             Spacer(modifier = Modifier.height(16.dp))
-            Text(
-                text = movie.name, style = MaterialTheme.typography.titleMedium, maxLines = 1
-            )
-            Spacer(modifier = Modifier.height(8.dp))
-            Text(text = stringResource(R.string.director_label, movie.director), style = MaterialTheme.typography.bodyMedium)
-            Text(text = stringResource(R.string.year_label, movie.year), style = MaterialTheme.typography.bodyMedium)
-            Text(text = stringResource(R.string.rating_label, movie.rating), style = MaterialTheme.typography.bodyMedium)
-            Spacer(modifier = Modifier.height(16.dp))
+
             Text(
                 text = movie.description,
                 style = MaterialTheme.typography.bodyMedium,
                 maxLines = 3,
-                overflow = TextOverflow.Ellipsis
+                overflow = TextOverflow.Ellipsis,
+                modifier = Modifier.fillMaxWidth()
             )
         }
     }

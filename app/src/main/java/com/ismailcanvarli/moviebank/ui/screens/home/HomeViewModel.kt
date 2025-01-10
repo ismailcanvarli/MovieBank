@@ -26,6 +26,9 @@ class HomeViewModel @Inject constructor(
     private val _movieList = MutableStateFlow<List<Movie>>(emptyList())
     val movieList: StateFlow<List<Movie>> = _movieList
 
+    private val _errorMessage = MutableStateFlow<String?>(null)
+    val errorMessage: StateFlow<String?> = _errorMessage
+
     init {
         fetchMovies()
     }
@@ -35,8 +38,17 @@ class HomeViewModel @Inject constructor(
      */
     private fun fetchMovies() {
         viewModelScope.launch {
-            repository.getAllMovies().collect { movies ->
-                _movieList.value = movies
+            try {
+                repository.getAllMovies().collect { movies ->
+                    if (movies.isEmpty()) {
+                        _errorMessage.value = "No movies found."
+                    } else {
+                        _movieList.value = movies
+                        _errorMessage.value = null
+                    }
+                }
+            } catch (e: Exception) {
+                _errorMessage.value = "Failed to load movies."
             }
         }
     }

@@ -3,6 +3,7 @@ package com.ismailcanvarli.moviebank.data.room
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.ismailcanvarli.moviebank.common.Constants
+import com.ismailcanvarli.moviebank.data.model.Movie
 
 /**
  * Favori filmleri temsil eden Room veritabanı varlığı.
@@ -31,3 +32,17 @@ data class FavoriteMovieEntity(
     val director: String,
     val description: String
 )
+
+fun FavoriteMovieEntity.toMovie(): Movie {
+    return Movie(
+        id = movieId,
+        name = name,
+        image = image,
+        price = price,
+        category = category,
+        rating = rating,
+        year = year,
+        director = director,
+        description = description
+    )
+}

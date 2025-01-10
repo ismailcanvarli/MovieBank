@@ -2,20 +2,19 @@
 
 package com.ismailcanvarli.moviebank.ui.screens.home
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.*
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import coil.compose.AsyncImage
-import com.ismailcanvarli.moviebank.common.Constants
+import com.ismailcanvarli.moviebank.ui.components.MovieCard
+import com.ismailcanvarli.moviebank.R
 
 /**
  * Tüm filmleri listeleyen ana ekran.
@@ -27,49 +26,40 @@ import com.ismailcanvarli.moviebank.common.Constants
 @Composable
 fun HomeScreen(navController: NavController, viewModel: HomeViewModel) {
     val movieList by viewModel.movieList.collectAsState()
+    val errorMessage by viewModel.errorMessage.collectAsState()
 
-    LazyColumn(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(8.dp),
-        verticalArrangement = Arrangement.spacedBy(8.dp)
-    ) {
-        items(movieList) { movie ->
-            Card(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(8.dp)
-                    .clickable {
-                        navController.navigate("movieDetailScreen/${movie.id}")
-                    },
-                elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
-            ) {
-                Row(
-                    modifier = Modifier.padding(16.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    AsyncImage(
-                        model = "${Constants.BASE_URL}${Constants.IMAGE_PATH}${movie.image}",
-                        contentDescription = movie.name,
-                        modifier = Modifier
-                            .size(100.dp)
-                            .clip(RoundedCornerShape(8.dp))
-                    )
-                    Spacer(modifier = Modifier.width(16.dp))
-                    Column {
-                        Text(
-                            text = movie.name, style = MaterialTheme.typography.titleMedium
-                        )
-                        Spacer(modifier = Modifier.height(4.dp))
-                        Text(
-                            text = "Director: ${movie.director}",
-                            style = MaterialTheme.typography.bodySmall
-                        )
-                        Text(
-                            text = "Year: ${movie.year}", style = MaterialTheme.typography.bodySmall
-                        )
-                    }
-                }
+    if (errorMessage != null) {
+        Box(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.Center
+        ) {
+            Text(
+                text = errorMessage ?: "",
+                style = MaterialTheme.typography.bodyMedium
+            )
+        }
+    } else if (movieList.isEmpty()) {
+        Box(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.Center
+        ) {
+            Text(
+                text = stringResource(R.string.movie_not_found),
+                style = MaterialTheme.typography.bodyMedium
+            )
+        }
+    } else {
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(8.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            items(movieList) { movie ->
+                MovieCard(
+                    movie = movie,
+                    onClick = { navController.navigate("movieDetailScreen/${movie.id}") }
+                )
             }
         }
     }

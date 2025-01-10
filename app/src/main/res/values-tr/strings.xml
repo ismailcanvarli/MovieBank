@@ -18,6 +18,12 @@
     <string name="movie_bank_title">Film Bankası</string>
     <string name="movie_details_title">Film Detayları</string>
     <string name="movie_not_found">Film bulunamadı</string>
+    <string name="movie_title">Başlık: %1$s</string>
+    <string name="movie_director">Yönetmen: %1$s</string>
+    <string name="movie_year">Yıl: %1$d</string>
+    <string name="movie_price">Fiyat: %1$d₺</string>
+    <string name="movie_name">Adı: %1$s</string>
+    <string name="movie_amount">Adet: %1$d</string>
     <string name="rating_label">Puan: %1$.1f</string>
     <string name="remove_all_instances">Tüm öğeleri kaldır</string>
     <string name="remove_button">Kaldır</string>

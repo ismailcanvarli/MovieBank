@@ -17,6 +17,12 @@
     <string name="movie_bank_title">Movie Bank</string>
     <string name="movie_details_title">Movie Details</string>
     <string name="movie_not_found">Movie not found</string>
+    <string name="movie_name">Name: %1$s</string>
+    <string name="movie_amount">Amount: %1$d</string>
+    <string name="movie_title">Title: %1$s</string>
+    <string name="movie_director">Director: %1$s</string>
+    <string name="movie_year">Year: %1$d</string>
+    <string name="movie_price">Price: $%1$d</string>
     <string name="rating_label">Rating: %1$.1f</string>
     <string name="remove_all_instances">Remove all instances</string>
     <string name="remove_button">Remove</string>
