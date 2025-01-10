@@ -13,8 +13,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
+import com.ismailcanvarli.moviebank.R
 import com.ismailcanvarli.moviebank.common.Constants
 import com.ismailcanvarli.moviebank.data.model.Movie
 
@@ -63,7 +65,7 @@ fun MovieCard(
                         modifier = Modifier.padding(bottom = 8.dp)
                     )
                     Text(
-                        text = "Director: ${movie.director}",
+                        text = stringResource(R.string.director_label, movie.director),
                         style = MaterialTheme.typography.bodySmall
                     )
                 }

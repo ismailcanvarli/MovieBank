@@ -5,6 +5,7 @@ package com.ismailcanvarli.moviebank.ui.screens.cart
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -44,17 +45,20 @@ fun MovieCartScreen(viewModel: MovieCartViewModel) {
             .padding(16.dp),
         verticalArrangement = Arrangement.SpaceBetween
     ) {
-        if (cartMovies.isEmpty()) {
-            Text(
-                text = stringResource(R.string.cart_empty_message),
-                style = MaterialTheme.typography.bodyMedium,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.fillMaxSize()
-            )
-        } else {
-            LazyColumn(
-                modifier = Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(8.dp)
-            ) {
+        LazyColumn(
+            modifier = Modifier.weight(1f),
+            verticalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            if (cartMovies.isEmpty()) {
+                item {
+                    Text(
+                        text = stringResource(R.string.cart_empty_message),
+                        style = MaterialTheme.typography.bodyMedium,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.fillMaxWidth().padding(vertical = 16.dp)
+                    )
+                }
+            } else {
                 items(cartMovies) { movie ->
                     MovieCartItem(
                         movie = movie,
@@ -66,21 +70,27 @@ fun MovieCartScreen(viewModel: MovieCartViewModel) {
                     )
                 }
             }
-            Column {
-                DiscountCodeSection { enteredCode ->
+        }
+
+        Column {
+            DiscountCodeSection(
+                onApplyDiscount = { enteredCode ->
                     val discount = Constants.DISCOUNT_CODES[enteredCode] ?: 0
                     appliedDiscount.value = discount
                     discount > 0
-                }
-                TotalPriceSection(
-                    cartMovies = cartMovies,
-                    appliedDiscount = appliedDiscount.value,
-                    onConfirmCart = {
-                        // TODO: Sepet onaylandığında yapılacak işlemler
+                },
+                isEnabled = cartMovies.isNotEmpty()
+            )
+            TotalPriceSection(
+                cartMovies = if (cartMovies.isEmpty()) emptyList() else cartMovies,
+                appliedDiscount = appliedDiscount.value,
+                onConfirmCart = {
+                    if (cartMovies.isNotEmpty()) {
                         println("Sepet onaylandı, indirim: %${appliedDiscount.value}")
                     }
-                )
-            }
+                },
+                isEnabled = cartMovies.isNotEmpty()
+            )
         }
     }
 }

@@ -7,8 +7,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.text.KeyboardActions
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -21,7 +19,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import com.ismailcanvarli.moviebank.R
 import com.ismailcanvarli.moviebank.common.Constants
@@ -29,11 +26,15 @@ import com.ismailcanvarli.moviebank.common.Constants
 /**
  * Kullanıcının indirim kodu girmesini ve uygulamasını sağlayan bileşen.
  * @param onApplyDiscount Girilen indirim kodunu işleyen callback.
+ * @param isEnabled İndirim kodu giriş alanının etkin olup olmadığını belirleyen değer.
  */
 @Composable
-fun DiscountCodeSection(onApplyDiscount: (String) -> Boolean) {
+fun DiscountCodeSection(
+    onApplyDiscount: (String) -> Boolean,
+    isEnabled: Boolean
+) {
     var discountCode by remember { mutableStateOf("") }
-    var discountMessage by remember { mutableStateOf<String?>(null) } // State nullable olarak tanımlandı
+    var discountMessage by remember { mutableStateOf<String?>(null) }
     val discountAppliedMessage = stringResource(R.string.discount_applied_message)
     val invalidDiscountMessage = stringResource(R.string.invalid_discount_message)
 
@@ -45,33 +46,25 @@ fun DiscountCodeSection(onApplyDiscount: (String) -> Boolean) {
     ) {
         TextField(
             value = discountCode,
-            onValueChange = { discountCode = it },
+            onValueChange = { if (isEnabled) discountCode = it },
             label = { Text(stringResource(R.string.enter_discount_code)) },
             modifier = Modifier.weight(1f),
-            singleLine = true,
-            keyboardOptions = KeyboardOptions.Default.copy(
-                imeAction = ImeAction.Done
-            ),
-            keyboardActions = KeyboardActions(
-                onDone = {
+            enabled = isEnabled,
+            singleLine = true
+        )
+        Spacer(modifier = Modifier.width(8.dp))
+        Button(
+            onClick = {
+                if (isEnabled) {
                     val isValid = onApplyDiscount(discountCode)
                     discountMessage = if (isValid) {
-                        "$discountAppliedMessage %${Constants.DISCOUNT_CODES[discountCode]}"
+                        "$discountAppliedMessage (%${Constants.DISCOUNT_CODES[discountCode]})"
                     } else {
                         invalidDiscountMessage
                     }
                 }
-            )
-        )
-        Spacer(modifier = Modifier.width(8.dp))
-        Button(onClick = {
-            val isValid = onApplyDiscount(discountCode)
-            discountMessage = if (isValid) {
-                "$discountAppliedMessage (%${Constants.DISCOUNT_CODES[discountCode]})"
-            } else {
-                invalidDiscountMessage
-            }
-        }) {
+            }, enabled = isEnabled
+        ) {
             Text(stringResource(R.string.apply_button))
         }
     }

@@ -79,16 +79,15 @@ fun MovieCartItem(
                         modifier = Modifier.padding(bottom = 8.dp)
                     )
                     Text(
-                        text = "Price: $${movie.price}",
+                        text = stringResource(R.string.movie_price, movie.price),
                         style = MaterialTheme.typography.bodySmall
                     )
                     Text(
-                        text = "Quantity: ${movie.orderAmount}",
+                        text = stringResource(R.string.movie_amount, movie.orderAmount),
                         style = MaterialTheme.typography.bodySmall
                     )
                 }
 
-                // Sağda işlem butonları
                 Column(horizontalAlignment = Alignment.End) {
                     IconButton(onClick = onIncrement) {
                         Icon(

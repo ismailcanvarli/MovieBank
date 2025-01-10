@@ -14,8 +14,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.ismailcanvarli.moviebank.data.model.MovieCart
 import com.ismailcanvarli.moviebank.R
+import com.ismailcanvarli.moviebank.data.model.MovieCart
 
 /**
  * Sepetin toplam fiyatını ve uygulanan indirimi gösteren bileşen.
@@ -24,14 +24,15 @@ import com.ismailcanvarli.moviebank.R
  * @param cartMovies Sepetteki filmlerin listesi.
  * @param appliedDiscount Uygulanan indirim yüzdesi.
  * @param onConfirmCart Sepeti onaylama işlemini tetikleyen callback.
+ * @param isEnabled Sepetin onaylanabilir olup olmadığını belirleyen değer.
  */
 @Composable
 fun TotalPriceSection(
     cartMovies: List<MovieCart>,
     appliedDiscount: Int,
-    onConfirmCart: () -> Unit
+    onConfirmCart: () -> Unit,
+    isEnabled: Boolean
 ) {
-    // Toplam fiyatı Double olarak hesaplayın
     val totalPrice = cartMovies.sumOf { it.price * it.orderAmount }.toDouble()
     val discountedPrice = totalPrice - (totalPrice * appliedDiscount / 100)
 
@@ -46,7 +47,7 @@ fun TotalPriceSection(
             text = stringResource(R.string.total_price, discountedPrice),
             style = MaterialTheme.typography.titleMedium
         )
-        Button(onClick = onConfirmCart) {
+        Button(onClick = onConfirmCart, enabled = isEnabled) {
             Text(stringResource(R.string.confirm_cart))
         }
     }
