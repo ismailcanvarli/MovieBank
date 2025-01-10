@@ -7,16 +7,12 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.ismailcanvarli.moviebank.R
 import com.ismailcanvarli.moviebank.common.Constants
 import com.ismailcanvarli.moviebank.data.model.Movie
 
@@ -46,6 +42,7 @@ fun MovieCard(
             Row(
                 modifier = Modifier.padding(16.dp), verticalAlignment = Alignment.CenterVertically
             ) {
+                // Film Görseli
                 AsyncImage(
                     model = "${Constants.BASE_URL}${Constants.IMAGE_PATH}${movie.image}",
                     contentDescription = movie.name,
@@ -56,22 +53,14 @@ fun MovieCard(
 
                 Spacer(modifier = Modifier.width(16.dp))
 
-                Column(
-                    modifier = Modifier.weight(1f), horizontalAlignment = Alignment.Start
-                ) {
-                    Text(
-                        text = movie.name,
-                        style = MaterialTheme.typography.titleMedium,
-                        modifier = Modifier.padding(bottom = 8.dp)
-                    )
-                    Text(
-                        text = stringResource(R.string.director_label, movie.director),
-                        style = MaterialTheme.typography.bodySmall
-                    )
-                }
+                // Film Detayları
+                MovieDetailsColumn(
+                    movie = movie, modifier = Modifier.weight(1f)
+                )
             }
         }
 
+        // Opsiyonel İşlem Butonu
         actionButton?.let {
             Box(
                 modifier = Modifier
