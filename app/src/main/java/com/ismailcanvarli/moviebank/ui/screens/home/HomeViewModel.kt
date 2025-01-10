@@ -37,17 +37,16 @@ class HomeViewModel @Inject constructor(
         fetchMovies()
     }
 
+    /**
+     * Tüm filmleri yeniden yükler.
+     */
     private fun fetchMovies() {
         viewModelScope.launch {
-            try {
-                repository.getAllMovies().collect { movies ->
-                    allMovies.clear()
-                    allMovies.addAll(movies)
-                    _movieList.value = movies
-                    _errorMessage.value = null
-                }
-            } catch (e: Exception) {
-                _errorMessage.value = "Failed to load movies."
+            repository.getAllMovies().collect { movies ->
+                allMovies.clear()
+                allMovies.addAll(movies)
+                _movieList.value = movies
+                _errorMessage.value = null
             }
         }
     }
