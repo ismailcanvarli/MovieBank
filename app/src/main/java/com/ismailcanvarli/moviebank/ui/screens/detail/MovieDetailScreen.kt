@@ -4,7 +4,6 @@ package com.ismailcanvarli.moviebank.ui.screens.detail
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -12,6 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -25,11 +25,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.ismailcanvarli.moviebank.R
 import com.ismailcanvarli.moviebank.common.Constants
 import com.ismailcanvarli.moviebank.data.model.Movie
-import com.ismailcanvarli.moviebank.R
 
 /**
  * Film detaylarını ve kullanıcı etkileşimlerini yöneten ekran.
@@ -81,32 +82,25 @@ fun MovieDetailScreen(
                 )
                 .align(Alignment.TopCenter)
         ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(horizontal = 16.dp),
-                verticalAlignment = Alignment.CenterVertically
+            IconButton(
+                onClick = { navController.popBackStack() },
+                modifier = Modifier.align(Alignment.CenterStart).padding(start = 16.dp)
             ) {
-                IconButton(
-                    onClick = { navController.popBackStack() },
-                    modifier = Modifier.padding(end = 8.dp)
-                ) {
-                    Icon(
-                        painter = painterResource(id = R.drawable.ic_arrow_back),
-                        contentDescription = stringResource(R.string.back_button_description),
-                        tint = Color.White
-                    )
-                }
-
-                Text(
-                    text = movie.name,
-                    style = androidx.compose.material3.MaterialTheme.typography.titleLarge.copy(
-                        color = Color.White
-                    ),
-                    modifier = Modifier.weight(1f),
-                    textAlign = androidx.compose.ui.text.style.TextAlign.Center
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_arrow_back),
+                    contentDescription = stringResource(R.string.back_button_description),
+                    tint = Color.White
                 )
             }
+
+            Text(
+                text = movie.name,
+                style = MaterialTheme.typography.titleLarge.copy(
+                    color = Color.White
+                ),
+                textAlign = TextAlign.Center,
+                modifier = Modifier.align(Alignment.Center)
+            )
         }
 
         MovieOrderItem(
