@@ -27,6 +27,7 @@ class MovieDetailViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val _isFavorite = MutableStateFlow(false)
+    val isFavorite = _isFavorite
 
     private val _addToCartMessage = MutableStateFlow<String?>(null)
 
@@ -42,17 +43,23 @@ class MovieDetailViewModel @Inject constructor(
     }
 
     /**
-     * Filmi favorilere ekler.
-     * Eğer film zaten favorilerdeyse işlem yapılmaz.
+     * Favori durumunu değiştirir (ekle veya çıkar).
      *
-     * @param movie Favorilere eklenecek film bilgisi.
+     * @param movie Favori durumu değiştirilecek film bilgisi.
      */
-    fun addFavorite(movie: FavoriteMovieEntity) {
+    fun toggleFavorite(movie: FavoriteMovieEntity) {
         viewModelScope.launch {
-            val isAlreadyFavorite = favoritesRepository.isMovieFavorite(movie.movieId)
-            if (!isAlreadyFavorite) {
-                favoritesRepository.addFavoriteMovie(movie)
-                _isFavorite.value = true
+            try {
+                if (_isFavorite.value) {
+                    favoritesRepository.deleteFavoriteMovieById(movie.movieId)
+                    _isFavorite.value = false
+                } else {
+                    favoritesRepository.addFavoriteMovie(movie)
+                    _isFavorite.value = true
+                }
+                checkIfFavorite(movie.movieId)
+            } catch (e: Exception) {
+                e.printStackTrace()
             }
         }
     }

@@ -16,6 +16,7 @@ import com.ismailcanvarli.moviebank.R
  * @param route Rota adı.
  * @param icon İkon vektörü (null olabilir).
  * @param showInBottomBar Alt navigasyon çubuğunda gösterilip gösterilmeyeceği.
+ * @param titleResId Başlık kaynağı ID'si.
  */
 sealed class NavigationItem(
     val route: String,

@@ -9,8 +9,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -52,9 +50,18 @@ fun MovieCartItem(
         )
         Spacer(modifier = Modifier.width(16.dp))
         Column(modifier = Modifier.weight(1f)) {
-            Text(text = movie.name, style = MaterialTheme.typography.titleMedium)
-            Text(text = "Price: ${movie.price}$", style = MaterialTheme.typography.bodySmall)
-            Text(text = "Amount: ${movie.orderAmount}", style = MaterialTheme.typography.bodySmall)
+            Text(
+                text = stringResource(R.string.movie_name, movie.name),
+                style = MaterialTheme.typography.titleMedium
+            )
+            Text(
+                text = stringResource(R.string.movie_price, movie.price),
+                style = MaterialTheme.typography.bodySmall
+            )
+            Text(
+                text = stringResource(R.string.movie_amount, movie.orderAmount),
+                style = MaterialTheme.typography.bodySmall
+            )
         }
         Row(verticalAlignment = Alignment.CenterVertically) {
             IconButton(
@@ -79,7 +86,7 @@ fun MovieCartItem(
             Spacer(modifier = Modifier.width(8.dp))
             IconButton(onClick = onRemove) {
                 Icon(
-                    imageVector = Icons.Default.Delete,
+                    painter = painterResource(id = R.drawable.ic_delete),
                     contentDescription = stringResource(R.string.remove_all_instances)
                 )
             }
