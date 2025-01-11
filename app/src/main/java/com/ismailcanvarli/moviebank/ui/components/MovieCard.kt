@@ -40,7 +40,8 @@ fun MovieCard(
             shape = RoundedCornerShape(12.dp)
         ) {
             Row(
-                modifier = Modifier.padding(16.dp), verticalAlignment = Alignment.CenterVertically
+                modifier = Modifier.padding(8.dp),
+                verticalAlignment = Alignment.CenterVertically
             ) {
                 // Film Görseli
                 AsyncImage(
@@ -51,23 +52,20 @@ fun MovieCard(
                         .clip(RoundedCornerShape(8.dp))
                 )
 
-                Spacer(modifier = Modifier.width(16.dp))
+                Spacer(modifier = Modifier.width(8.dp))
 
                 // Film Detayları
                 MovieDetailsColumn(
-                    movie = movie, modifier = Modifier.weight(1f)
+                    movie = movie,
+                    modifier = Modifier.weight(1f)
                 )
-            }
-        }
 
-        // Opsiyonel İşlem Butonu
-        actionButton?.let {
-            Box(
-                modifier = Modifier
-                    .align(Alignment.TopEnd)
-                    .padding(8.dp)
-            ) {
-                it()
+                // Opsiyonel Aksiyon Butonları
+                actionButton?.let {
+                    Box(modifier = Modifier.padding(start = 8.dp)) {
+                        it()
+                    }
+                }
             }
         }
     }

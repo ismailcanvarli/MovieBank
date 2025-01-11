@@ -70,7 +70,7 @@ fun MovieOrderItem(
             }
 
             Text(
-                text = stringResource(R.string.movie_amount, orderAmount),
+                text = orderAmount.toString(),
                 style = MaterialTheme.typography.bodyMedium,
                 modifier = Modifier.padding(horizontal = 8.dp)
             )
