@@ -19,9 +19,9 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 class RoomDBModule {
-
     /**
      * Room veritabanı örneğini oluşturur ve sağlar.
+     *
      * @param context Uygulama bağlamı.
      * @return AppDatabase nesnesi.
      */
@@ -37,6 +37,7 @@ class RoomDBModule {
 
     /**
      * Filmlerle ilgili veritabanı işlemleri için DAO'yu sağlar.
+     *
      * @param appDatabase Room veritabanı örneği.
      * @return MovieDao nesnesi.
      */
@@ -48,6 +49,7 @@ class RoomDBModule {
 
     /**
      * Favorilerle ilgili veritabanı işlemleri için DAO'yu sağlar.
+     *
      * @param appDatabase Room veritabanı örneği.
      * @return FavoriteMovieDao nesnesi.
      */

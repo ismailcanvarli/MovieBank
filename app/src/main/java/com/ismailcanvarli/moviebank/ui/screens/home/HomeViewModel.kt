@@ -53,6 +53,8 @@ class HomeViewModel @Inject constructor(
 
     /**
      * Arama sorgusunu günceller ve filtre uygular.
+     *
+     * @param query Arama sorgusu.
      */
     fun updateSearchQuery(query: String) {
         _searchQuery.value = query
@@ -75,6 +77,8 @@ class HomeViewModel @Inject constructor(
 
     /**
      * Sıralama seçeneğine göre filmleri sıralar.
+     *
+     * @param optionKey Sıralama seçeneği.
      */
     fun updateSortOption(optionKey: String) {
         _movieList.value = when (optionKey) {

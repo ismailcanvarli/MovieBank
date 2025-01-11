@@ -7,6 +7,7 @@ import androidx.room.RoomDatabase
 
 /**
  * Uygulamanın Room veritabanını yöneten sınıf.
+ *
  * @property movieDao Film sepetiyle ilgili işlemleri sağlayan DAO.
  * @property favoriteMovieDao Favori filmlerle ilgili işlemleri sağlayan DAO.
  */

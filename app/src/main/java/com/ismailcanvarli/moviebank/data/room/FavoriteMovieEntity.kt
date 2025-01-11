@@ -33,6 +33,9 @@ data class FavoriteMovieEntity(
     val description: String
 )
 
+/**
+ * Favori filmleri genel bir Movie nesnesine dönüştürür.
+ */
 fun FavoriteMovieEntity.toMovie(): Movie {
     return Movie(
         id = movieId,

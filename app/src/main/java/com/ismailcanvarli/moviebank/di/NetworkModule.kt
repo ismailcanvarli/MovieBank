@@ -16,9 +16,9 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 class NetworkModule {
-
     /**
      * Retrofit nesnesini oluşturur ve sağlar.
+     *
      * @return Retrofit yapılandırması.
      */
     @Provides
@@ -32,6 +32,7 @@ class NetworkModule {
 
     /**
      * ApiService nesnesini oluşturur ve sağlar.
+     *
      * @param retrofit Retrofit nesnesi.
      * @return ApiService arayüzü.
      */

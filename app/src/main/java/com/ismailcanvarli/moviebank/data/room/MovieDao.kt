@@ -11,9 +11,9 @@ import androidx.room.Query
  */
 @Dao
 interface MovieDao {
-
     /**
      * Bir filmi sepete ekler. Eğer aynı film zaten varsa, eski kayıt üzerine yazılır.
+     *
      * @param movie Sepete eklenecek film.
      */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -21,6 +21,7 @@ interface MovieDao {
 
     /**
      * Belirtilen kullanıcıya ait sepet filmlerini getirir.
+     *
      * @param userName Kullanıcı adı.
      * @return Kullanıcının sepetindeki filmler.
      */
@@ -29,6 +30,7 @@ interface MovieDao {
 
     /**
      * Bir filmi sepetten siler.
+     *
      * @param movie Silinecek film.
      */
     @Delete

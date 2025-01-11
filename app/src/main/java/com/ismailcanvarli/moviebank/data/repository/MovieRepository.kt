@@ -18,6 +18,7 @@ class MovieRepository @Inject constructor(
 ) {
     /**
      * Tüm filmleri getirir.
+     *
      * @return Filmleri içeren akış.
      */
     fun getAllMovies(): Flow<List<Movie>> = flow {
@@ -27,6 +28,7 @@ class MovieRepository @Inject constructor(
 
     /**
      * Bir filmi sepete ekler.
+     *
      * @param movie Sepete eklenecek film.
      * @param orderAmount Sipariş miktarı.
      * @param userName Kullanıcı adı.
@@ -51,6 +53,7 @@ class MovieRepository @Inject constructor(
 
     /**
      * Kullanıcının sepetindeki filmleri getirir.
+     *
      * @param userName Kullanıcı adı.
      * @return Sepetteki filmlerin listesi.
      */
@@ -61,6 +64,7 @@ class MovieRepository @Inject constructor(
 
     /**
      * Sepetten bir filmi siler.
+     *
      * @param cartId Silinecek filmin sepet ID'si.
      * @param userName Kullanıcı adı.
      * @return İşlem sonucunu içeren yanıt modeli.

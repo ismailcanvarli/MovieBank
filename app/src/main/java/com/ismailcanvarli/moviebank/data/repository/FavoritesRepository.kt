@@ -15,6 +15,7 @@ class FavoritesRepository @Inject constructor(
 ) {
     /**
      * Favori filmleri getirir.
+     *
      * @return Favori filmleri içeren akış.
      */
     fun getFavoriteMovies(): Flow<List<FavoriteMovieEntity>> {
@@ -23,6 +24,7 @@ class FavoritesRepository @Inject constructor(
 
     /**
      * Bir filmin favori olup olmadığını kontrol eder.
+     *
      * @param movieId Kontrol edilecek film ID'si.
      * @return Film favorideyse true, değilse false döner.
      */
@@ -32,6 +34,7 @@ class FavoritesRepository @Inject constructor(
 
     /**
      * Bir filmi favorilere ekler.
+     *
      * @param movie Favorilere eklenecek film.
      */
     suspend fun addFavoriteMovie(movie: FavoriteMovieEntity) {
@@ -40,6 +43,7 @@ class FavoritesRepository @Inject constructor(
 
     /**
      * Favorilerden bir filmi siler.
+     *
      * @param movie Silinecek film.
      */
     suspend fun deleteFavoriteMovie(movie: FavoriteMovieEntity) {
@@ -48,6 +52,7 @@ class FavoritesRepository @Inject constructor(
 
     /**
      * Favorilerden bir filmi siler.
+     *
      * @param movieId Silinecek film ID'si.
      */
     suspend fun deleteFavoriteMovieById(movieId: Int) {

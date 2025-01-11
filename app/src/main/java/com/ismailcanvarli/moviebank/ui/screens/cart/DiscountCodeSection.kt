@@ -26,6 +26,7 @@ import com.ismailcanvarli.moviebank.ui.theme.ButtonColors
 
 /**
  * Kullanıcının indirim kodu girmesini ve uygulamasını sağlayan bileşen.
+ *
  * @param onApplyDiscount Girilen indirim kodunu işleyen callback.
  * @param isEnabled İndirim kodu giriş alanının etkin olup olmadığını belirleyen değer.
  */

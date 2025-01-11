@@ -14,7 +14,6 @@ import retrofit2.http.POST
  * API çağrılarını gerçekleştiren arayüz.
  */
 interface ApiService {
-
     /**
      * Tüm filmleri getirir.
      * @return Filmler listesini içeren yanıt modeli.
@@ -24,6 +23,7 @@ interface ApiService {
 
     /**
      * Sepete bir film ekler.
+     *
      * @param name Filmin adı.
      * @param image Filmin görsel yolu.
      * @param price Filmin fiyatı.
@@ -53,6 +53,7 @@ interface ApiService {
 
     /**
      * Sepetteki filmleri getirir.
+     *
      * @param userName Kullanıcı adı.
      * @return Sepetteki filmleri içeren yanıt modeli.
      */
@@ -62,6 +63,7 @@ interface ApiService {
 
     /**
      * Sepetten bir filmi siler.
+     *
      * @param cartId Silinecek filmin sepet ID'si.
      * @param userName Kullanıcı adı.
      * @return İşlem sonucunu içeren yanıt modeli.

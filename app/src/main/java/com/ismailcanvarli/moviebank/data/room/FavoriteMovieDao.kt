@@ -15,9 +15,9 @@ import kotlinx.coroutines.flow.Flow
  */
 @Dao
 interface FavoriteMovieDao {
-
     /**
      * Bir filmi favorilere ekler. Eğer aynı film zaten varsa, eski kayıt üzerine yazılır.
+     *
      * @param movie Favorilere eklenecek film.
      */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -25,6 +25,7 @@ interface FavoriteMovieDao {
 
     /**
      * Tüm favori filmleri getirir.
+     *
      * @return Favori filmler listesini içeren Flow.
      */
     @Query("SELECT * FROM ${Constants.MOVIE_FAVORITE_TABLE}")
@@ -32,6 +33,7 @@ interface FavoriteMovieDao {
 
     /**
      * Bir filmi favorilerden siler.
+     *
      * @param movie Silinecek film.
      */
     @Delete
@@ -39,6 +41,7 @@ interface FavoriteMovieDao {
 
     /**
      * Belirtilen ID'ye sahip bir filmi favorilerden siler.
+     *
      * @param movieId Silinecek film ID'si.
      */
     @Query("DELETE FROM ${Constants.MOVIE_FAVORITE_TABLE} WHERE movieId = :movieId")
@@ -46,6 +49,7 @@ interface FavoriteMovieDao {
 
     /**
      * Belirtilen ID'ye sahip bir filmin favori olup olmadığını kontrol eder.
+     *
      * @param movieId Kontrol edilecek film ID'si.
      * @return Film favoriyse true, değilse false döner.
      */
@@ -54,6 +58,7 @@ interface FavoriteMovieDao {
 
     /**
      * Belirtilen ID'ye sahip favori bir filmi getirir.
+     *
      * @param movieId Film ID'si.
      * @return Favori film veya null.
      */

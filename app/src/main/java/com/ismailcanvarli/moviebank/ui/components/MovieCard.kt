@@ -43,7 +43,6 @@ fun MovieCard(
                 modifier = Modifier.padding(8.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                // Film Görseli
                 AsyncImage(
                     model = "${Constants.BASE_URL}${Constants.IMAGE_PATH}${movie.image}",
                     contentDescription = movie.name,
@@ -54,13 +53,11 @@ fun MovieCard(
 
                 Spacer(modifier = Modifier.width(8.dp))
 
-                // Film Detayları
                 MovieDetailsColumn(
                     movie = movie,
                     modifier = Modifier.weight(1f)
                 )
 
-                // Opsiyonel Aksiyon Butonları
                 actionButton?.let {
                     Box(modifier = Modifier.padding(start = 8.dp)) {
                         it()

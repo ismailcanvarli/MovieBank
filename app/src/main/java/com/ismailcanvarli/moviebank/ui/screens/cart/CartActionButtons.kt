@@ -36,7 +36,6 @@ fun CartActionButtons(
     isDecrementEnabled: Boolean = true
 ) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        // Artırma butonu
         IconButton(onClick = onIncrement, modifier = Modifier.padding(bottom = 4.dp)) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_increase),
@@ -44,14 +43,12 @@ fun CartActionButtons(
             )
         }
 
-        // Sipariş adedi
         Text(
             text = orderAmount.toString(),
             style = MaterialTheme.typography.titleMedium,
-            modifier = Modifier.padding(vertical = 2.dp) // Boşluk azaltıldı
+            modifier = Modifier.padding(vertical = 2.dp)
         )
 
-        // Azaltma butonu
         IconButton(onClick = onDecrement, enabled = isDecrementEnabled, modifier = Modifier.padding(top = 4.dp)) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_decrease),
@@ -59,7 +56,6 @@ fun CartActionButtons(
             )
         }
 
-        // Silme butonu
         IconButton(onClick = onRemove, modifier = Modifier.padding(top = 4.dp)) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_delete),

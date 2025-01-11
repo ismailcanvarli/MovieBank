@@ -73,7 +73,6 @@ fun MovieDetailContent(
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Film detayları
         MovieDetailsColumn(
             movie = movie,
             modifier = Modifier.padding(horizontal = 16.dp)
