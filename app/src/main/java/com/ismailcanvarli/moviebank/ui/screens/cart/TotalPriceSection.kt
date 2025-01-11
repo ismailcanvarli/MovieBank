@@ -17,6 +17,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.ismailcanvarli.moviebank.R
 import com.ismailcanvarli.moviebank.data.model.MovieCart
+import com.ismailcanvarli.moviebank.ui.theme.ButtonColors
 
 /**
  * Sepetin toplam fiyatını ve uygulanan indirimi gösteren bileşen.
@@ -54,7 +55,11 @@ fun TotalPriceSection(
                 style = MaterialTheme.typography.titleMedium
             )
         }
-        Button(onClick = onConfirmCart, enabled = isEnabled) {
+        Button(
+            onClick = onConfirmCart,
+            enabled = isEnabled,
+            colors = ButtonColors()
+        ) {
             Text(stringResource(R.string.confirm_cart))
         }
     }

@@ -54,8 +54,8 @@ fun MovieCartScreen(viewModel: MovieCartViewModel) {
                 item {
                     Box(
                         modifier = Modifier
-                            .fillParentMaxSize(), // Hem yatayda hem dikeyde ortalamak için
-                        contentAlignment = Alignment.Center // Tüm eksenlerde ortala
+                            .fillParentMaxSize(),
+                        contentAlignment = Alignment.Center
                     ) {
                         Text(
                             text = stringResource(R.string.cart_empty_message),

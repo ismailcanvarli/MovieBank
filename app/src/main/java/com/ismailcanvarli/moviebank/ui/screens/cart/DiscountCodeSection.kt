@@ -22,6 +22,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.ismailcanvarli.moviebank.R
 import com.ismailcanvarli.moviebank.common.Constants
+import com.ismailcanvarli.moviebank.ui.theme.ButtonColors
 
 /**
  * Kullanıcının indirim kodu girmesini ve uygulamasını sağlayan bileşen.
@@ -63,7 +64,9 @@ fun DiscountCodeSection(
                         invalidDiscountMessage
                     }
                 }
-            }, enabled = isEnabled
+            },
+            enabled = isEnabled,
+            colors = ButtonColors()
         ) {
             Text(stringResource(R.string.apply_button))
         }
