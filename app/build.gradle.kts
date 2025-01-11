@@ -86,6 +86,8 @@ dependencies {
     kapt(libs.androidx.room.compiler)
     // Room için Coroutine desteği
     implementation(libs.androidx.room.ktx)
+    // Material
+    implementation (libs.material)
 }
 
 kapt {

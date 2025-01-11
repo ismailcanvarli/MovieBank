@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.MovieBank" parent="Theme.Material3.Light">
+    <style name="Theme.MovieBank" parent="Theme.Material3.Dark">
         <item name="colorPrimary">@color/color_primary</item>
         <item name="colorOnBackground">@color/color_on_background</item>
         <item name="colorSurface">@color/color_surface</item>
