@@ -47,7 +47,7 @@ fun MovieCard(
                     model = "${Constants.BASE_URL}${Constants.IMAGE_PATH}${movie.image}",
                     contentDescription = movie.name,
                     modifier = Modifier
-                        .size(100.dp)
+                        .size(130.dp)
                         .clip(RoundedCornerShape(8.dp))
                 )
 

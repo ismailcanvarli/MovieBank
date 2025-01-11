@@ -26,6 +26,17 @@ fun MovieDetailsColumn(
     movie: Movie,
     modifier: Modifier = Modifier
 ) {
+    val translatedCategory = when (movie.category) {
+        "Action" -> stringResource(id = R.string.category_action)
+        "Comedy" -> stringResource(id = R.string.category_comedy)
+        "Drama" -> stringResource(id = R.string.category_drama)
+        "Horror" -> stringResource(id = R.string.category_horror)
+        "Science Fiction" -> stringResource(id = R.string.category_scifi)
+        "Romance" -> stringResource(id = R.string.category_romance)
+        "Thriller" -> stringResource(id = R.string.category_thriller)
+        else -> movie.category
+    }
+
     Column(
         modifier = modifier, horizontalAlignment = Alignment.Start
     ) {
@@ -74,6 +85,20 @@ fun MovieDetailsColumn(
             Spacer(modifier = Modifier.width(4.dp))
             Text(
                 text = "${movie.rating}", style = MaterialTheme.typography.bodyMedium
+            )
+        }
+        Spacer(modifier = Modifier.height(4.dp))
+
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Icon(
+                painter = painterResource(id = R.drawable.ic_category),
+                contentDescription = stringResource(R.string.category_label),
+                modifier = Modifier.size(16.dp),
+                tint = MaterialTheme.colorScheme.primary
+            )
+            Spacer(modifier = Modifier.width(4.dp))
+            Text(
+                text = translatedCategory, style = MaterialTheme.typography.bodyMedium
             )
         }
     }
