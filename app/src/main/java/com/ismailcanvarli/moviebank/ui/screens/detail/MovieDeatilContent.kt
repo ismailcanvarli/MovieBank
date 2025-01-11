@@ -19,6 +19,7 @@ import coil.compose.AsyncImage
 import com.ismailcanvarli.moviebank.common.Constants
 import com.ismailcanvarli.moviebank.data.model.Movie
 import com.ismailcanvarli.moviebank.data.room.FavoriteMovieEntity
+import com.ismailcanvarli.moviebank.ui.components.AddToFavoriteButton
 import com.ismailcanvarli.moviebank.ui.components.MovieDetailsColumn
 
 /**

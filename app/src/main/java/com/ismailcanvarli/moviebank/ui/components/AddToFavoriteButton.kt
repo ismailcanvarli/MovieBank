@@ -1,7 +1,8 @@
 //Created by canVarli on 1/9/2025
 
-package com.ismailcanvarli.moviebank.ui.screens.detail
+package com.ismailcanvarli.moviebank.ui.components
 
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -33,7 +34,7 @@ fun AddToFavoriteButton(
             .size(64.dp)
             .padding(8.dp)
     ) {
-        androidx.compose.foundation.Canvas(
+        Canvas(
             modifier = Modifier.matchParentSize()
         ) {
             drawCircle(

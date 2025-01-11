@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.ismailcanvarli.moviebank.data.room.toMovie
 import com.ismailcanvarli.moviebank.ui.components.MovieCard
-import com.ismailcanvarli.moviebank.ui.screens.detail.AddToFavoriteButton
+import com.ismailcanvarli.moviebank.ui.components.AddToFavoriteButton
 import com.ismailcanvarli.moviebank.R
 
 /**
