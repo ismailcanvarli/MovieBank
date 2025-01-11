@@ -63,16 +63,17 @@ fun MovieDetailsColumn(
 
         Row(verticalAlignment = Alignment.CenterVertically) {
             Icon(
-                painter = painterResource(id = R.drawable.ic_attach_money),
-                contentDescription = stringResource(R.string.movie_price),
+                painter = painterResource(id = R.drawable.ic_category),
+                contentDescription = stringResource(R.string.category_label),
                 modifier = Modifier.size(16.dp),
                 tint = MaterialTheme.colorScheme.primary
             )
             Spacer(modifier = Modifier.width(4.dp))
             Text(
-                text = "${movie.price} $", style = MaterialTheme.typography.bodyMedium
+                text = translatedCategory, style = MaterialTheme.typography.bodyMedium
             )
         }
+
         Spacer(modifier = Modifier.height(4.dp))
 
         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -91,14 +92,14 @@ fun MovieDetailsColumn(
 
         Row(verticalAlignment = Alignment.CenterVertically) {
             Icon(
-                painter = painterResource(id = R.drawable.ic_category),
-                contentDescription = stringResource(R.string.category_label),
+                painter = painterResource(id = R.drawable.ic_attach_money),
+                contentDescription = stringResource(R.string.movie_price),
                 modifier = Modifier.size(16.dp),
                 tint = MaterialTheme.colorScheme.primary
             )
             Spacer(modifier = Modifier.width(4.dp))
             Text(
-                text = translatedCategory, style = MaterialTheme.typography.bodyMedium
+                text = "${movie.price} $", style = MaterialTheme.typography.bodyMedium
             )
         }
     }
