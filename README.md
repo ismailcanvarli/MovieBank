@@ -1,4 +1,4 @@
-# MovieBank
+# Movie Bank
 
 MovieBank is a modern movie sales application developed using advanced Android development techniques and technologies. The app includes features such as listing movies, viewing details, adding favorites, sorting, and managing the shopping cart. It also offers Dark Mode and Light Mode theme options alongside support for both Turkish and English languages. The "Poppins" font is used throughout the app, enhancing the user experience with a modern and aesthetic design.
 
