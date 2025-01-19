@@ -11,6 +11,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import com.ismailcanvarli.moviebank.R
 
 /**
  * Ana ekranın verilerini yöneten ViewModel.
@@ -35,6 +36,27 @@ class HomeViewModel @Inject constructor(
 
     private val _selectedCategory = MutableStateFlow("All")
     val selectedCategory: StateFlow<String> = _selectedCategory
+
+    val sortOptions = mapOf(
+        "NAME_ASC" to R.string.sort_name_asc,
+        "NAME_DESC" to R.string.sort_name_desc,
+        "RATING_HIGH" to R.string.sort_rating_high,
+        "RATING_LOW" to R.string.sort_rating_low,
+        "PRICE_LOW" to R.string.sort_price_low,
+        "PRICE_HIGH" to R.string.sort_price_high
+    )
+
+    val categories = mapOf(
+        "All" to R.string.category_all,
+        "Action" to R.string.category_action,
+        "Comedy" to R.string.category_comedy,
+        "Drama" to R.string.category_drama,
+        "Horror" to R.string.category_horror,
+        "Sci-Fi" to R.string.category_scifi,
+        "Romance" to R.string.category_romance,
+        "Thriller" to R.string.category_thriller,
+        "Fantastic" to R.string.category_fantastic
+    )
 
     init {
         fetchMovies()

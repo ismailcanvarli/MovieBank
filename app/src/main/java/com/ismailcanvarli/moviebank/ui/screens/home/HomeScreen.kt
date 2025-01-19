@@ -29,26 +29,10 @@ fun HomeScreen(navController: NavController, viewModel: HomeViewModel) {
     val searchQuery by viewModel.searchQuery.collectAsState()
     val selectedCategory by viewModel.selectedCategory.collectAsState()
     val errorMessage by viewModel.errorMessage.collectAsState()
-    val sortOptions = mapOf(
-        "NAME_ASC" to stringResource(R.string.sort_name_asc),
-        "NAME_DESC" to stringResource(R.string.sort_name_desc),
-        "RATING_HIGH" to stringResource(R.string.sort_rating_high),
-        "RATING_LOW" to stringResource(R.string.sort_rating_low),
-        "PRICE_LOW" to stringResource(R.string.sort_price_low),
-        "PRICE_HIGH" to stringResource(R.string.sort_price_high)
-    )
+    val sortOptions = viewModel.sortOptions.mapValues { stringResource(it.value) }
+    val categories = viewModel.categories.mapValues { stringResource(it.value) }
+
     var selectedSortKey by remember { mutableStateOf("NAME_ASC") }
-    val categories = mapOf(
-        "All" to stringResource(R.string.category_all),
-        "Action" to stringResource(R.string.category_action),
-        "Comedy" to stringResource(R.string.category_comedy),
-        "Drama" to stringResource(R.string.category_drama),
-        "Horror" to stringResource(R.string.category_horror),
-        "Sci-Fi" to stringResource(R.string.category_scifi),
-        "Romance" to stringResource(R.string.category_romance),
-        "Thriller" to stringResource(R.string.category_thriller),
-        "Fantastic" to stringResource(R.string.category_fantastic)
-    )
 
     Column {
         Row(
@@ -66,14 +50,15 @@ fun HomeScreen(navController: NavController, viewModel: HomeViewModel) {
 
             Spacer(modifier = Modifier.width(8.dp))
 
-            DropdownMenuWithSelection(options = sortOptions.values.toList(),
-                selectedOption = sortOptions[selectedSortKey] ?: "",
+            DropdownMenuWithSelection(
+                options = sortOptions.values.toList(),
+                selectedOption = sortOptions[selectedSortKey] ?: stringResource(R.string.sort_name_asc),
                 onOptionSelected = { selectedText ->
-                    selectedSortKey =
-                        sortOptions.entries.firstOrNull { it.value == selectedText }?.key
-                            ?: "NAME_ASC"
+                    selectedSortKey = sortOptions.entries.firstOrNull { it.value == selectedText }?.key
+                        ?: "NAME_ASC"
                     viewModel.updateSortOption(selectedSortKey)
-                })
+                }
+            )
         }
 
         CategorySelector(
@@ -107,8 +92,10 @@ fun HomeScreen(navController: NavController, viewModel: HomeViewModel) {
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 items(movieList) { movie ->
-                    MovieCard(movie = movie,
-                        onClick = { navController.navigate("movieDetailScreen/${movie.id}") })
+                    MovieCard(
+                        movie = movie,
+                        onClick = { navController.navigate("movieDetailScreen/${movie.id}") }
+                    )
                 }
             }
         }
