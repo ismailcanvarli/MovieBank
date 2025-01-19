@@ -23,7 +23,7 @@ class HomeViewModel @Inject constructor(
     private val repository: MovieRepository
 ) : ViewModel() {
 
-    private val allMovies = mutableListOf<Movie>() // Tüm filmleri tutar
+    private val allMovies = mutableListOf<Movie>()
     private val _movieList = MutableStateFlow<List<Movie>>(emptyList())
     val movieList: StateFlow<List<Movie>> = _movieList
 
@@ -32,6 +32,9 @@ class HomeViewModel @Inject constructor(
 
     private val _searchQuery = MutableStateFlow("")
     val searchQuery: StateFlow<String> = _searchQuery
+
+    private val _selectedCategory = MutableStateFlow("All")
+    val selectedCategory: StateFlow<String> = _selectedCategory
 
     init {
         fetchMovies()
@@ -45,7 +48,7 @@ class HomeViewModel @Inject constructor(
             repository.getAllMovies().collect { movies ->
                 allMovies.clear()
                 allMovies.addAll(movies)
-                _movieList.value = movies
+                applyFilters()
                 _errorMessage.value = null
             }
         }
@@ -62,16 +65,26 @@ class HomeViewModel @Inject constructor(
     }
 
     /**
+     * Kategoriye göre filmleri filtreler.
+     *
+     * @param category Kategori.
+     */
+    fun updateCategory(category: String) {
+        _selectedCategory.value = category
+        applyFilters()
+    }
+
+    /**
      * Arama sorgusuna göre filmleri filtreler.
      */
     private fun applyFilters() {
         val query = _searchQuery.value.lowercase()
-        _movieList.value = if (query.isEmpty()) {
-            allMovies
-        } else {
-            allMovies.filter {
-                it.name.lowercase().contains(query) || it.director.lowercase().contains(query)
-            }
+        val category = _selectedCategory.value
+
+        _movieList.value = allMovies.filter { movie ->
+            val matchesCategory = category == "All" || movie.category.equals(category, ignoreCase = true)
+            val matchesQuery = query.isEmpty() || movie.name.lowercase().contains(query)
+            matchesCategory && matchesQuery
         }
     }
 

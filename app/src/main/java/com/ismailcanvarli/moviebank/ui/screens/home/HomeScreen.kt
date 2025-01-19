@@ -28,6 +28,7 @@ import com.ismailcanvarli.moviebank.ui.components.MovieCard
 fun HomeScreen(navController: NavController, viewModel: HomeViewModel) {
     val movieList by viewModel.movieList.collectAsState()
     val searchQuery by viewModel.searchQuery.collectAsState()
+    val selectedCategory by viewModel.selectedCategory.collectAsState()
     val errorMessage by viewModel.errorMessage.collectAsState()
     val sortOptions = mapOf(
         "NAME_ASC" to stringResource(R.string.sort_name_asc),
@@ -38,6 +39,16 @@ fun HomeScreen(navController: NavController, viewModel: HomeViewModel) {
         "PRICE_HIGH" to stringResource(R.string.sort_price_high)
     )
     var selectedSortKey by remember { mutableStateOf("NAME_ASC") }
+    val categories = mapOf(
+        "All" to stringResource(R.string.category_all),
+        "Action" to stringResource(R.string.category_action),
+        "Comedy" to stringResource(R.string.category_comedy),
+        "Drama" to stringResource(R.string.category_drama),
+        "Horror" to stringResource(R.string.category_horror),
+        "Sci-Fi" to stringResource(R.string.category_scifi),
+        "Romance" to stringResource(R.string.category_romance),
+        "Thriller" to stringResource(R.string.category_thriller)
+    )
 
     Column {
         Row(
@@ -65,6 +76,12 @@ fun HomeScreen(navController: NavController, viewModel: HomeViewModel) {
                     viewModel.updateSortOption(selectedSortKey)
                 })
         }
+
+        CategorySelector(
+            categories = categories,
+            selectedCategory = selectedCategory,
+            onCategorySelected = { viewModel.updateCategory(it) }
+        )
 
         if (errorMessage != null) {
             Box(

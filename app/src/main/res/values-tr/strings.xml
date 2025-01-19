@@ -44,6 +44,7 @@
     <string name="sort_price_high">Fiyat (Yüksekten Düşüğe)</string>
     <string name="order_amount_label">Sipariş adeti: %1$d</string>
     <string name="favorites_empty_message">Favori filminiz bulunmamaktadır.</string>
+    <string name="category_all">Hepsi</string>
     <string name="category_action">Aksiyon</string>
     <string name="category_comedy">Komedi</string>
     <string name="category_drama">Dram</string>
