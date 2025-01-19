@@ -34,6 +34,7 @@ fun MovieDetailsColumn(
         "Science Fiction" -> stringResource(id = R.string.category_scifi)
         "Romance" -> stringResource(id = R.string.category_romance)
         "Thriller" -> stringResource(id = R.string.category_thriller)
+        "Fantastic" -> stringResource(id = R.string.category_fantastic)
         else -> movie.category
     }
 
