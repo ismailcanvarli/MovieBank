@@ -1,4 +1,4 @@
-package com.ismailcanvarli.moviebank.ui.components
+package com.ismailcanvarli.moviebank.ui.navigation
 
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
@@ -8,7 +8,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.ismailcanvarli.moviebank.ui.navigation.NavigationItem
 
 /**
  * Uygulamanın alt navigasyon çubuğunu oluşturur.

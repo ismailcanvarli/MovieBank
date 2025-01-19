@@ -16,7 +16,6 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.ismailcanvarli.moviebank.R
-import com.ismailcanvarli.moviebank.ui.components.AppScaffold
 import com.ismailcanvarli.moviebank.ui.screens.cart.MovieCartScreen
 import com.ismailcanvarli.moviebank.ui.screens.cart.MovieCartViewModel
 import com.ismailcanvarli.moviebank.ui.screens.detail.MovieDetailScreen
