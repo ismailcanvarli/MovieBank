@@ -7,7 +7,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -58,10 +57,9 @@ fun HomeScreen(navController: NavController, viewModel: HomeViewModel) {
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            TextField(value = searchQuery,
-                onValueChange = { viewModel.updateSearchQuery(it) },
-                placeholder = { Text(text = stringResource(R.string.search_placeholder))},
-                singleLine = true,
+            SearchBar(
+                searchQuery = searchQuery,
+                onSearchQueryChange = { viewModel.updateSearchQuery(it) },
                 modifier = Modifier.weight(1f)
             )
 

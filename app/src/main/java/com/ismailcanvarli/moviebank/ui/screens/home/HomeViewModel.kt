@@ -83,7 +83,9 @@ class HomeViewModel @Inject constructor(
 
         _movieList.value = allMovies.filter { movie ->
             val matchesCategory = category == "All" || movie.category.equals(category, ignoreCase = true)
-            val matchesQuery = query.isEmpty() || movie.name.lowercase().contains(query)
+            val matchesQuery = query.isEmpty() ||
+                    movie.name.lowercase().contains(query) ||
+                    movie.director.lowercase().contains(query)
             matchesCategory && matchesQuery
         }
     }
