@@ -14,9 +14,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
+/**
+ * Kategori seçim bileşeni.
+ * Kullanıcı kategoriler arasında gezinirken kullanılır.
+ *
+ * @param categories Kategorilerin anahtar-değer çiftleri.
+ * @param selectedCategory Seçilen kategori.
+ * @param onCategorySelected Kategori seçildiğinde tetiklenecek fonksiyon.
+ */
 @Composable
 fun CategorySelector(
-    categories: Map<String, String>, selectedCategory: String, onCategorySelected: (String) -> Unit
+    categories: Map<String, String>,
+    selectedCategory: String,
+    onCategorySelected: (String) -> Unit
 ) {
     LazyRow(
         modifier = Modifier
