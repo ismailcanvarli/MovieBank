@@ -111,8 +111,7 @@ class HomeViewModel @Inject constructor(
 
             val matchesCategory = category == "All" || normalizedCategory.equals(category, ignoreCase = true)
             val matchesQuery = query.isEmpty() ||
-                    movie.name.lowercase().contains(query) ||
-                    movie.director.lowercase().contains(query)
+                    movie.name.lowercase().contains(query)
 
             matchesCategory && matchesQuery
         }

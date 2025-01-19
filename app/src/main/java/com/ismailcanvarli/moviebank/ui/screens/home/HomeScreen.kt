@@ -3,8 +3,8 @@
 package com.ismailcanvarli.moviebank.ui.screens.home
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
@@ -14,7 +14,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.ismailcanvarli.moviebank.R
-import com.ismailcanvarli.moviebank.ui.components.MovieCard
+import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.runtime.Composable
 
 /**
  * Tüm filmleri listeleyen ana ekran.
@@ -85,14 +86,13 @@ fun HomeScreen(navController: NavController, viewModel: HomeViewModel) {
                 )
             }
         } else {
-            LazyColumn(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(8.dp),
+            LazyVerticalGrid(
+                columns = GridCells.Fixed(2),
+                modifier = Modifier.fillMaxSize(),
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 items(movieList) { movie ->
-                    MovieCard(
+                    MovieGridCard(
                         movie = movie,
                         onClick = { navController.navigate("movieDetailScreen/${movie.id}") }
                     )
