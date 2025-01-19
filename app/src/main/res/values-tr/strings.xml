@@ -52,4 +52,5 @@
     <string name="category_scifi">Bilim Kurgu</string>
     <string name="category_romance">Romantik</string>
     <string name="category_thriller">Gerilim</string>
+    <string name="category_fantastic">Fantastik</string>
 </resources>

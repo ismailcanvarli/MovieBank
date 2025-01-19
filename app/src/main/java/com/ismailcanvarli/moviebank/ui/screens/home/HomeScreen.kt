@@ -46,7 +46,8 @@ fun HomeScreen(navController: NavController, viewModel: HomeViewModel) {
         "Horror" to stringResource(R.string.category_horror),
         "Sci-Fi" to stringResource(R.string.category_scifi),
         "Romance" to stringResource(R.string.category_romance),
-        "Thriller" to stringResource(R.string.category_thriller)
+        "Thriller" to stringResource(R.string.category_thriller),
+        "Fantastic" to stringResource(R.string.category_fantastic)
     )
 
     Column {
