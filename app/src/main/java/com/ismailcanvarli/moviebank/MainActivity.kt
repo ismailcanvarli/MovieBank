@@ -3,6 +3,7 @@ package com.ismailcanvarli.moviebank
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import com.ismailcanvarli.moviebank.ui.navigation.AppNavGraph
 import com.ismailcanvarli.moviebank.ui.screens.home.HomeViewModel
@@ -19,6 +20,7 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         setContent {
             MovieBankTheme {
                 AppNavGraph(homeViewModel)

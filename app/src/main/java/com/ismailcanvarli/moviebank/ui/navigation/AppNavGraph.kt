@@ -24,6 +24,7 @@ import com.ismailcanvarli.moviebank.ui.screens.favorite.FavoritesScreen
 import com.ismailcanvarli.moviebank.ui.screens.favorite.FavoritesViewModel
 import com.ismailcanvarli.moviebank.ui.screens.home.HomeScreen
 import com.ismailcanvarli.moviebank.ui.screens.home.HomeViewModel
+import com.ismailcanvarli.moviebank.ui.screens.splash.SplashScreen
 
 /**
  * Uygulamanın navigasyon yapısını tanımlar.
@@ -38,9 +39,18 @@ fun AppNavGraph(homeViewModel: HomeViewModel) {
     AppScaffold(navController = navController) { innerPadding ->
         NavHost(
             navController = navController,
-            startDestination = NavigationItem.Home.route,
+            startDestination = NavigationItem.Splash.route,
             modifier = Modifier.padding(innerPadding)
         ) {
+            composable(NavigationItem.Splash.route) {
+                SplashScreen(
+                    navigateToHome = {
+                        navController.navigate(NavigationItem.Home.route) {
+                            popUpTo(NavigationItem.Splash.route) { inclusive = true }
+                        }
+                    }
+                )
+            }
             composable(NavigationItem.Home.route) {
                 HomeScreen(navController = navController, viewModel = homeViewModel)
             }

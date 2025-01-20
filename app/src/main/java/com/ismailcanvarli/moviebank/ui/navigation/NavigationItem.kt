@@ -28,6 +28,7 @@ sealed class NavigationItem(
     object Favorites : NavigationItem("favoritesScreen", Icons.Default.Favorite, true, R.string.favorites_title)
     object Cart : NavigationItem("movieCartScreen", Icons.Default.ShoppingCart, true, R.string.cart_title)
     object Details : NavigationItem("movieDetailScreen/{movieId}", null, false, R.string.details_title)
+    object Splash : NavigationItem("splashScreen", null, false, R.string.splash_title)
 
     companion object {
         val entries = listOf(Home, Favorites, Cart)

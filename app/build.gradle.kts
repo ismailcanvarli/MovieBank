@@ -109,6 +109,9 @@ dependencies {
     // Hilt Testing
     androidTestImplementation(libs.hilt.android.testing)
     kaptAndroidTest(libs.hilt.android.compiler)
+
+    // Lottie Animation
+    implementation(libs.lottie.compose)
 }
 
 kapt {
