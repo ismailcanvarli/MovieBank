@@ -2,7 +2,8 @@
 
 package com.ismailcanvarli.moviebank.ui.screens.cart
 
-import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -25,7 +26,6 @@ import com.ismailcanvarli.moviebank.R
  * @param onDecrement Sipariş miktarını azaltan fonksiyon.
  * @param onRemove Film öğesini tamamen kaldıran fonksiyon.
  * @param isDecrementEnabled Sipariş miktarını azaltma butonunun etkin olup olmadığını belirten değer.
- *
  */
 @Composable
 fun CartActionButtons(
@@ -35,28 +35,32 @@ fun CartActionButtons(
     onRemove: () -> Unit,
     isDecrementEnabled: Boolean = true
 ) {
-    Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        IconButton(onClick = onIncrement, modifier = Modifier.padding(bottom = 4.dp)) {
-            Icon(
-                painter = painterResource(id = R.drawable.ic_increase),
-                contentDescription = stringResource(R.string.increase_order_amount)
-            )
-        }
-
-        Text(
-            text = orderAmount.toString(),
-            style = MaterialTheme.typography.titleMedium,
-            modifier = Modifier.padding(vertical = 2.dp)
-        )
-
-        IconButton(onClick = onDecrement, enabled = isDecrementEnabled, modifier = Modifier.padding(top = 4.dp)) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        modifier = Modifier.padding(vertical = 4.dp)
+    ) {
+        IconButton(onClick = onDecrement, enabled = isDecrementEnabled) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_decrease),
                 contentDescription = stringResource(R.string.decrease_order_amount)
             )
         }
 
-        IconButton(onClick = onRemove, modifier = Modifier.padding(top = 4.dp)) {
+        Text(
+            text = orderAmount.toString(),
+            style = MaterialTheme.typography.titleMedium,
+            modifier = Modifier.padding(horizontal = 8.dp)
+        )
+
+        IconButton(onClick = onIncrement) {
+            Icon(
+                painter = painterResource(id = R.drawable.ic_increase),
+                contentDescription = stringResource(R.string.increase_order_amount)
+            )
+        }
+
+        IconButton(onClick = onRemove) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_delete),
                 contentDescription = stringResource(R.string.remove_all_instances)

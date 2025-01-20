@@ -67,7 +67,7 @@ fun MovieCartScreen(viewModel: MovieCartViewModel) {
                 }
             } else {
                 items(cartMovies) { movie ->
-                    MovieCartItem(
+                    CartItemCard(
                         movie = movie,
                         onIncrement = { viewModel.incrementMovieAmount(movie) },
                         onDecrement = { viewModel.decrementMovieAmount(movie) },
@@ -88,6 +88,7 @@ fun MovieCartScreen(viewModel: MovieCartViewModel) {
                 },
                 isEnabled = cartMovies.isNotEmpty()
             )
+
             TotalPriceSection(
                 cartMovies = if (cartMovies.isEmpty()) emptyList() else cartMovies,
                 appliedDiscount = appliedDiscount.value,
