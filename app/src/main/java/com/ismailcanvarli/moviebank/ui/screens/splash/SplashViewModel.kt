@@ -25,7 +25,7 @@ class SplashViewModel : ViewModel() {
      */
     private fun startSplashTimer() {
         viewModelScope.launch {
-            delay(2000)
+            delay(3000)
             _isSplashFinished.value = true
         }
     }
