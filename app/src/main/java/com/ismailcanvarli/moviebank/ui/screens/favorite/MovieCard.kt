@@ -15,7 +15,6 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.ismailcanvarli.moviebank.common.Constants
 import com.ismailcanvarli.moviebank.data.model.Movie
-import com.ismailcanvarli.moviebank.ui.components.MovieDetailsColumn
 
 /**
  * Film kartı bileşeni.
@@ -48,7 +47,7 @@ fun MovieCard(
                     model = "${Constants.BASE_URL}${Constants.IMAGE_PATH}${movie.image}",
                     contentDescription = movie.name,
                     modifier = Modifier
-                        .size(130.dp)
+                        .size(150.dp)
                         .clip(RoundedCornerShape(8.dp))
                 )
 

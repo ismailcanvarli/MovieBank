@@ -1,6 +1,6 @@
 //Created by canVarli on 1/11/2025
 
-package com.ismailcanvarli.moviebank.ui.components
+package com.ismailcanvarli.moviebank.ui.screens.favorite
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Icon
@@ -72,6 +72,22 @@ fun MovieDetailsColumn(
             Spacer(modifier = Modifier.width(4.dp))
             Text(
                 text = translatedCategory, style = MaterialTheme.typography.bodyMedium
+            )
+        }
+
+        Spacer(modifier = Modifier.height(4.dp))
+
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Icon(
+                painter = painterResource(id = R.drawable.ic_year),
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.primary,
+                modifier = Modifier.size(24.dp)
+            )
+            Spacer(modifier = Modifier.width(8.dp))
+            Text(
+                text = "${movie.year}",
+                style = MaterialTheme.typography.bodyMedium
             )
         }
 
