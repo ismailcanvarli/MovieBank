@@ -4,20 +4,12 @@ MovieBank is a modern movie sales application developed using advanced Android d
 
 ## Screenshots
 
-### Light Theme (English)
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/63eac6ee-e3ee-4600-bfe3-510561454081" alt="Home Page" width="20%" style="margin-right: 10px;"/>
-  <img src="https://github.com/user-attachments/assets/37a881af-39b1-4b49-9418-b547a08fb658" alt="Movie Details" width="20%" style="margin-right: 10px;"/>
-  <img src="https://github.com/user-attachments/assets/e94f1496-e5a6-434b-8041-b97b2698a450" alt="Favorites" width="20%" style="margin-right: 10px;"/>
-  <img src="https://github.com/user-attachments/assets/d5871b6d-cb96-4254-9240-93541527380a" alt="Cart" width="20%"/>
-</p>
-
-### Dark Theme (Türkçe)
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/e11f7b9e-1d1a-4a76-a2ec-d299087ed82d" alt="Anasayfa" width="20%" style="margin-right: 10px;"/>
-  <img src="https://github.com/user-attachments/assets/a198e4a1-0466-4d17-91cb-01d1b00fba41" alt="Film Detayları" width="20%" style="margin-right: 10px;"/>
-  <img src="https://github.com/user-attachments/assets/fe36de07-850e-42ec-9c81-003f38d311f4" alt="Favoriler" width="20%" style="margin-right: 10px;"/>
-  <img src="https://github.com/user-attachments/assets/b746df26-47d2-4039-a419-da7c33d32b3d" alt="Sepet" width="20%"/>
+  <img src="https://github.com/user-attachments/assets/c588eb1d-fef3-40cd-b12f-182627bb622c" alt="Splash Screen" width="15%" style="margin-right: 10px;"/>
+  <img src="https://github.com/user-attachments/assets/63eac6ee-e3ee-4600-bfe3-510561454081" alt="Home Page" width="15%" style="margin-right: 10px;"/>
+  <img src="https://github.com/user-attachments/assets/37a881af-39b1-4b49-9418-b547a08fb658" alt="Movie Details" width="15%" style="margin-right: 10px;"/>
+  <img src="https://github.com/user-attachments/assets/e94f1496-e5a6-434b-8041-b97b2698a450" alt="Favorites" width="15%" style="margin-right: 10px;"/>
+  <img src="https://github.com/user-attachments/assets/d5871b6d-cb96-4254-9240-93541527380a" alt="Cart" width="15%"/>
 </p>
 
 ## Features
@@ -49,6 +41,12 @@ MovieBank is a modern movie sales application developed using advanced Android d
 - Delete products from the cart.
 - Apply discount codes.
 
+### Splash Screen
+
+- Displays an animated Lottie animation during the app launch.
+- Automatically navigates to the home screen after a 3-second delay.
+- Provides a smooth and engaging introduction to the app.
+
 ## Technologies Used
 
 - **Jetpack Compose**: Modern and declarative UI building.
@@ -60,6 +58,7 @@ MovieBank is a modern movie sales application developed using advanced Android d
 - **Navigation**: Navigation between screens.
 - **LiveData and Coroutines**: Managing data streams.
 - **Room Database**: Local storage for user favorite movies.
+- **Lottie**: Added animated splash screen for a modern user experience.
 
 ## API
 
