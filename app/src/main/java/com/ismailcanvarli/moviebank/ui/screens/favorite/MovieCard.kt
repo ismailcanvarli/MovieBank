@@ -1,6 +1,6 @@
 //Created by canVarli on 1/10/2025
 
-package com.ismailcanvarli.moviebank.ui.components
+package com.ismailcanvarli.moviebank.ui.screens.favorite
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.ismailcanvarli.moviebank.common.Constants
 import com.ismailcanvarli.moviebank.data.model.Movie
+import com.ismailcanvarli.moviebank.ui.components.MovieDetailsColumn
 
 /**
  * Film kartı bileşeni.
