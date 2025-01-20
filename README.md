@@ -2,15 +2,34 @@
 
 MovieBank is a modern movie sales application developed using advanced Android development techniques and technologies. The app includes features such as listing movies, viewing details, adding favorites, sorting, and managing the shopping cart. It also offers Dark Mode and Light Mode theme options alongside support for both Turkish and English languages. The "Poppins" font is used throughout the app, enhancing the user experience with a modern and aesthetic design.
 
-## Screenshots
+## 📸 Screenshots
 
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/c588eb1d-fef3-40cd-b12f-182627bb622c" alt="Splash Screen" width="15%" style="margin-right: 10px;"/>
-  <img src="https://github.com/user-attachments/assets/63eac6ee-e3ee-4600-bfe3-510561454081" alt="Home Page" width="15%" style="margin-right: 10px;"/>
-  <img src="https://github.com/user-attachments/assets/37a881af-39b1-4b49-9418-b547a08fb658" alt="Movie Details" width="15%" style="margin-right: 10px;"/>
-  <img src="https://github.com/user-attachments/assets/e94f1496-e5a6-434b-8041-b97b2698a450" alt="Favorites" width="15%" style="margin-right: 10px;"/>
-  <img src="https://github.com/user-attachments/assets/d5871b6d-cb96-4254-9240-93541527380a" alt="Cart" width="15%"/>
-</p>
+<table align="center">
+    <tr>
+        <td align="center">
+            <strong><h2>Splash Screen</h2></strong>
+            <img src="https://github.com/user-attachments/assets/c588eb1d-fef3-40cd-b12f-182627bb622c" alt="Splash Screen" width="225" height="auto">
+        </td>
+        <td align="center">
+            <strong><h2>Home Page</h2></strong>
+            <img src="https://github.com/user-attachments/assets/7d859cd2-8358-4ef1-8119-432c719088cb" alt="Home Page" width="225" height="auto">
+        </td>
+        <td align="center">
+            <strong><h2>Movie Details</h2></strong>
+            <img src="https://github.com/user-attachments/assets/37a881af-39b1-4b49-9418-b547a08fb658" alt="Movie Details" width="225" height="auto">
+        </td>
+    </tr>
+    <tr>
+        <td align="center">
+            <strong><h2>Favorites Screen</h2></strong>
+            <img src="https://github.com/user-attachments/assets/e94f1496-e5a6-434b-8041-b97b2698a450" alt="Favorites" width="225" height="auto">
+        </td>
+        <td align="center">
+            <strong><h2>Cart Screen</h2></strong>
+            <img src="https://github.com/user-attachments/assets/d5871b6d-cb96-4254-9240-93541527380a" alt="Cart" width="225" height="auto">
+        </td>
+    </tr>
+</table>
 
 ## Features
 
