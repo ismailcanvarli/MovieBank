@@ -78,7 +78,7 @@ fun MovieDetailScreen(
                 .fillMaxWidth()
                 .height(80.dp)
                 .background(
-                    color = Color.Black.copy(alpha = 0.5f)
+                    color = MaterialTheme.colorScheme.primary
                 )
                 .align(Alignment.TopCenter)
         ) {
