@@ -11,11 +11,11 @@ MovieBank is a modern movie sales application developed using advanced Android d
             <img src="https://github.com/user-attachments/assets/c588eb1d-fef3-40cd-b12f-182627bb622c" alt="Splash Screen" width="225" height="auto">
         </td>
         <td align="center">
-            <strong><h2>Home Page</h2></strong>
+            <strong><h2>Home Screen</h2></strong>
             <img src="https://github.com/user-attachments/assets/7d859cd2-8358-4ef1-8119-432c719088cb" alt="Home Page" width="225" height="auto">
         </td>
         <td align="center">
-            <strong><h2>Movie Details</h2></strong>
+            <strong><h2>Details Sreen</h2></strong>
             <img src="https://github.com/user-attachments/assets/37a881af-39b1-4b49-9418-b547a08fb658" alt="Movie Details" width="225" height="auto">
         </td>
     </tr>
