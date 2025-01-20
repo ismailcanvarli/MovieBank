@@ -2,6 +2,7 @@
 
 package com.ismailcanvarli.moviebank.ui.screens.detail
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -46,18 +47,9 @@ fun MovieOrderItem(
         modifier = modifier
             .fillMaxWidth()
             .padding(8.dp),
-        verticalAlignment = Alignment.CenterVertically
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Center
     ) {
-        Spacer(modifier = Modifier.weight(1f))
-
-        Text(
-            text = stringResource(R.string.movie_price, moviePrice),
-            style = MaterialTheme.typography.titleLarge,
-            modifier = Modifier.align(Alignment.CenterVertically)
-        )
-
-        Spacer(modifier = Modifier.weight(1f))
-
         Row(verticalAlignment = Alignment.CenterVertically) {
             IconButton(
                 onClick = onDecrement,
