@@ -69,15 +69,15 @@ MovieBank is a modern movie sales application developed using advanced Android d
 ## Technologies Used
 
 - **Jetpack Compose**: Modern and declarative UI building.
-- **Retrofit**: API communication.
-  - Gson Converter and OkHttp support.
-- **Dagger Hilt**: Dependency Injection.
+- **Retrofit**: API communication. (Gson Converter and OkHttp support.)
+- **Dagger Hilt**: Dependency Injection for managing dependencies efficiently across the application.
 - **Coil**: Image loading.
 - **MVVM**: Application architecture.
 - **Navigation**: Navigation between screens.
 - **LiveData and Coroutines**: Managing data streams.
 - **Room Database**: Local storage for user favorite movies.
 - **Lottie**: Added animated splash screen for a modern user experience.
+
 
 ## API
 
