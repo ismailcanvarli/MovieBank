@@ -68,6 +68,7 @@ MovieBank is a modern movie sales application developed using advanced Android d
 
 ## Technologies Used
 
+- **Kotlin**: Primary programming language for Android development, providing concise and expressive syntax.
 - **Jetpack Compose**: Modern and declarative UI building.
 - **Retrofit**: API communication. (Gson Converter and OkHttp support.)
 - **Dagger Hilt**: Dependency Injection for managing dependencies efficiently across the application.
